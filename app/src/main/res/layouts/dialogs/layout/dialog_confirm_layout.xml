@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_body_shape">
+
+    <TextView
+        android:id="@+id/inputDialogTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_title_shape"
+        android:text="@string/dialog_title_error_text"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/sp_25"
+        android:textStyle="bold"
+        android:paddingTop="@dimen/dialog_content_body_padding_top"
+        android:gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/confirmDialogContentTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ConmpanyPhoneText"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/sp_20"
+        android:paddingTop="@dimen/dialog_content_body_padding_top"
+        android:paddingBottom="@dimen/dialog_content_body_padding_bottom"
+        android:layout_below="@id/inputDialogTitleTextView"
+        android:gravity="center_horizontal"
+        android:background="@drawable/dialog_content_shape"/>
+
+    <View
+        android:id="@+id/dialog_splite_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_splite_line"
+        android:layout_below="@id/confirmDialogContentTextView"
+        android:background="@color/dialog_split_line"/>
+
+    <com.google.android.flexbox.FlexboxLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/button_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:flexDirection="row_reverse"
+        app:flexWrap="nowrap"
+        app:justifyContent="space_around"
+        android:layout_below="@id/dialog_splite_line"
+        android:layout_alignEnd="@id/confirmDialogContentTextView"
+
+        android:background="@drawable/dialog_tool_bar_shape">
+
+        <Button
+            android:id="@+id/comfirm_dialog_button_1"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_50"
+            android:text="@string/button_confirm_text"
+            android:background="@null"
+            android:textSize="@dimen/sp_25"
+            android:textColor="@color/dialog_button_text"/>
+
+        <View
+            android:id="@+id/dialog_splite_line2"
+            android:layout_width="@dimen/dialog_splite_line"
+            android:layout_height="@dimen/dp_50"
+            android:background="@color/dialog_split_line"/>
+
+        <Button
+            android:id="@+id/comfirm_dialog_button_2"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="wrap_content"
+            android:text="@string/button_confirm_text"
+            android:background="@null"
+            android:textSize="@dimen/sp_25"
+            android:textColor="@color/dialog_button_text"/>
+
+        <View
+            android:id="@+id/dialog_splite_line3"
+            android:layout_width="@dimen/dialog_splite_line"
+            android:layout_height="@dimen/dp_50"
+            android:background="@color/dialog_split_line"/>
+
+        <Button
+            android:id="@+id/comfirm_dialog_button_3"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="wrap_content"
+            android:text="@string/button_confirm_text"
+            android:background="@null"
+            android:textSize="@dimen/sp_25"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:textColor="@color/dialog_button_text"/>
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+</RelativeLayout>

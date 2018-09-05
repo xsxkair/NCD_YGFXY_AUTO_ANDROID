@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.MainActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_top_bottom" />
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="213dp"
+        android:layout_height="146dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/logo"/>
+
+    <TextView
+        android:id="@+id/mainActivityEmptyTextView"
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_120"
+        android:layout_below="@id/logoImageView"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/startTestButton"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logoImageView"
+        android:layout_toStartOf="@id/mainActivityEmptyTextView"
+        android:layout_alignTop="@id/mainActivityEmptyTextView"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:text="@string/start_test_button_text"
+        android:background="@drawable/button_background"/>
+
+    <Button
+        android:id="@+id/queryDataButton"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logoImageView"
+        android:layout_toEndOf="@id/mainActivityEmptyTextView"
+        android:layout_alignTop="@id/mainActivityEmptyTextView"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:text="@string/query_data_button_text"
+        android:background="@drawable/button_background"/>
+
+
+    <ImageView
+        android:id="@+id/setImageView"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dp_85"
+        android:layout_marginEnd="@dimen/dp_15"
+        android:clickable="true"
+        android:background="@drawable/set_button_selector"/>
+
+</RelativeLayout>

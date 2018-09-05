@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="false"
+        android:state_enabled="true">
+
+        <shape>
+            <!-- 填充的颜色 -->
+            <solid android:color="@color/button_no_pressed"/>
+
+            <!-- 设置按钮的四个角为弧形 -->
+            <!-- android:radius 弧形的所有半径 -->
+            <corners android:radius="@dimen/button_radius_dp10"/>
+
+            <!-- 边框的宽度及颜色 -->
+            <stroke
+                android:width="@dimen/button_strok_width_dp0.1"
+                android:color="@color/colorPrimary"/>
+
+            <padding
+                android:bottom="@dimen/button_shap_padding_top_bottom"
+                android:top="@dimen/button_shap_padding_top_bottom"
+                android:left="@dimen/button_shap_padding_left_right"
+                android:right="@dimen/button_shap_padding_left_right"/>
+        </shape>
+    </item>
+    <!--true 为按下的时候-->
+    <item android:state_pressed="true">
+        <shape>
+            <!--点击之后的颜色-->
+            <solid android:color="@color/button_pressed"/>
+            <corners android:radius="@dimen/button_radius_dp10"/>
+            <!--点击之后的边框-->
+            <stroke
+                android:width="@dimen/button_strok_width_dp0.1"
+                android:color="@color/colorPrimary"/>
+
+            <padding
+                android:bottom="@dimen/button_shap_padding_top_bottom"
+                android:top="@dimen/button_shap_padding_top_bottom"
+                android:left="@dimen/button_shap_padding_left_right"
+                android:right="@dimen/button_shap_padding_left_right"/>
+        </shape>
+
+    </item>
+
+    <item android:state_pressed="false"
+        android:state_enabled="false">
+
+        <shape>
+            <!-- 填充的颜色 -->
+            <solid android:color="@color/button_no_enable"/>
+
+            <!-- 设置按钮的四个角为弧形 -->
+            <!-- android:radius 弧形的所有半径 -->
+            <corners android:radius="@dimen/button_radius_dp10"/>
+
+            <!-- 边框的宽度及颜色 -->
+            <stroke
+                android:width="@dimen/button_strok_width_dp0.1"
+                android:color="@color/colorPrimary"/>
+
+            <padding
+                android:bottom="@dimen/button_shap_padding_top_bottom"
+                android:top="@dimen/button_shap_padding_top_bottom"
+                android:left="@dimen/button_shap_padding_left_right"
+                android:right="@dimen/button_shap_padding_left_right"/>
+        </shape>
+    </item>
+</selector>

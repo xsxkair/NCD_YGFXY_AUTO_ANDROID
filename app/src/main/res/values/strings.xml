@@ -1,0 +1,214 @@
+<resources>
+    <string name="app_name">NCD_YGFXY</string>
+    <string name="app_version">V 1.0.00</string>
+    <string name="device_name">荧光免疫定量分析仪</string>
+    <string name="ncd_company_name_text">武汉纽康度生物科技股份有限公司</string>
+    <string name="Ncd_Company_Website_text">http://www.whnewcando.com</string>
+    <string name="SuperAdminPassword">201300</string>
+
+
+    /*
+    * common
+    */
+    <string name="actionSuccessText">操作成功</string>
+    <string name="ActionFailText">操作失败</string>
+    <string name="TestResultErrorText">Error</string>
+    <string name="ReportPassText">合格</string>
+    <string name="ReportNoPassText">不合格</string>
+    <string name="TestDataIntentNameText">TestDataIntent</string>
+    <string name="space_string"> </string>
+
+
+    /*
+    *lunch
+    */
+    <string name="system_init_text">系统初始化...</string>
+
+    <string name="account_text">请输入账号</string>
+    <string name="passwd_text">请输入密码</string>
+    <string name="remember_passwd_text">记住密码</string>
+    <string name="auto_login_text">自动登录</string>
+    <string name="login_text">登录</string>
+
+    /*
+    * main activity
+    */
+    <string name="start_test_button_text">开始测试</string>
+    <string name="query_data_button_text">数据查询</string>
+
+    /*
+    * set activity
+    */
+    <string name="setting_menu_device_info_text">设备信息</string>
+    <string name="setting_menu_user_set_text">操作人管理</string>
+    <string name="setting_menu_net_set_text">网络设置</string>
+    <string name="setting_menu_data_query_text">数据查询</string>
+    <string name="setting_menu_other_set_text">其他设置</string>
+    <string name="setting_menu_about_us_text">关于</string>
+    <string name="setting_menu_net_select_dialog_title">请选择</string>
+
+
+    /*
+    * user management activity
+    */
+    <string name="userListText">操作人列表</string>
+    <string name="addUserText">添加操作人</string>
+    <string name="userInfoTitle">操作人信息</string>
+    <string name="userNameIsRequired">操作人姓名缺失！</string>
+    <string name="userIdText">工&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;号：</string>
+    <string name="userNameText">姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;名：</string>
+    <string name="userSexText">性&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;别：</string>
+    <string name="userSexWomen">女</string>
+    <string name="userSexMen">男</string>
+    <string name="userAgeText">年&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;龄：</string>
+    <string name="userDepText">科&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;室：</string>
+    <string name="userJobText">职&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;务：</string>
+    <string name="userPhoneText">联系方式：</string>
+    <string name="cancelButtonText">取消</string>
+    <string name="submitButtonText">提交</string>
+    <string name="deleteUserButtonText">删除</string>
+
+    /*
+    * data query activity
+    */
+    <string name="QueryTestDateText">日期:</string>
+    <string name="QueryTestItemText">项目:</string>
+    <string name="QueryTestSampleIdText">样本号:</string>
+    <string name="QueryTesterText">操作人:</string>
+    <string name="QueryDataButtonText">查询</string>
+
+    <string name="DataTableIndexTitleText">序号</string>
+    <string name="DataTableItemTitleText">测试项目</string>
+    <string name="DataTableSampleIdTitleText">样本编号</string>
+    <string name="DataTableResultTitleText">结果</string>
+    <string name="DataTableDateTitleText">测试时间</string>
+    <string name="DataTableTesterTitleText">操作人</string>
+    <string name="DataTableReportStatusTitleText">状态</string>
+
+
+    /*
+    * test data detail activity
+    */
+    <string name="TestItemText">检&#160;测&#160;项&#160;目&#160;:</string>
+    <string name="TestSampleIdText">样&#160;本&#160;编&#160;号&#160;:</string>
+    <string name="TestCardIdText">试剂卡编号:</string>
+    <string name="TestTesterText">操&#160;&#160;&#160;&#160;作&#160;&#160;&#160;&#160;人:</string>
+    <string name="TestTimeText">检&#160;测&#160;时&#160;间&#160;:</string>
+    <string name="TestResultText">检&#160;测&#160;结&#160;果&#160;:</string>
+    <string name="TestNormalText">参考值范围:</string>
+    <string name="ReportCheckText">报告审核:</string>
+    <string name="UploadReportText">上传报告</string>
+    <string name="PrintfReportText">打印报告</string>
+
+
+    /*
+    * about us activity
+    */
+    <string name="ConmpanyNameText">公司名称：武汉纽康度生物科技股份有限公司</string>
+    <string name="ConmpanyAddrText">公司地址：武汉市东湖高新技术开发区高新大道858号生物医药园加速器二期A87-1栋四层</string>
+    <string name="ConmpanyPhoneText">联系电话：027-81339588&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;027-81337972     </string>
+    <string name="ConmpanyEmailText">企业邮箱：service@whnewcando.com</string>
+    <string name="ConmpanyWebText">企业网址：http：//www.whnewcando.com</string>
+    <string name="SoftVersionText">软件版本：</string>
+
+    /*
+    * device info activity
+    /
+    <string name="DeviceNameText">设备名称:</string>
+    <string name="DeviceIdText">设备编号:</string>
+    <string name="DeviceAddrText">设备地址:</string>
+    <string name="DeviceUserText">责&#160;&#160;&#160;任&#160;&#160;人:</string>
+    <string name="DevicePhoneText">联系方式:</string>
+    <string name="CheckPermissionText">确认权限</string>
+    <string name="PleaseInputPassword">请输入密码:</string>
+    <string name="ConfirmDialogTag">confirmdialog</string>
+    <string name="InputDialogTag">inputdialog</string>
+
+    <!-- eth config -->
+    <string name="eth_switch_text">Ethernet开关</string>
+    <string name="eth_set_text">Ethernet设置</string>
+    <string name="eth_con_text">Ethernet Configure</string>
+    <string name="eth_config">有线网设置</string>
+    <string name="eth_con_type">Connect type：</string>
+    <string name="eth_con_type_dhcp">DHCP</string>
+    <string name="eth_con_type_static">Static</string>
+    <string name="eth_mask">Mask address:</string>
+    <string name="eth_dns">DNS address：</string>
+    <string name="eth_gw">Gateway address：</string>
+    <string name="eth_ipaddr">IP address：</string>
+    <string name="eth_network_prefix_length">Prefix length：</string>
+    <string name="eth_on_text">on</string>
+    <string name="eth_off_text">off</string>
+    <string name="eth_settings_empty">can\'t be empty</string>
+    <string name="eth_settings_error">Failed to set: Please enter the valid characters 0~255</string>
+
+    <!-- wifi config -->
+    <string name="wifi_switch_text">WLAN开关</string>
+    <string name="wifi_msg_error">WLAN错误</string>
+    <string name="wifi_msg_openning">正在打开WLAN</string>
+    <string name="wifi_msg_closing">正在关闭WLAN</string>
+    <string name="wifi_msg_opened">WLAN已打开</string>
+    <string name="wifi_msg_closed">WLAN已关闭</string>
+    <string name="wifi_msg_scan_fail">扫描失败</string>
+    <string name="wifi_status_saved">已保存</string>
+    <string name="wifi_status_connected">已连接</string>
+    <string name="wifi_status_disconnected">已断开</string>
+    <string name="wifi_action_dialog_title">请选择</string>
+    <string name="wifi_dialog_title">请输入</string>
+    <string name="wifi_dialog_input_label">WIFI密码：</string>
+    <string name="wifi_state_connecting">连接中...</string>
+    <string name="wifi_state_AUTHENTICATING">正在验证身份信息...</string>
+    <string name="wifi_state_OBTAINING_IPADDR">正在获取IP地址...</string>
+    <string name="wifi_state_FAILED">连接失败</string>
+    <string name="wifi_unsuport_security">不支持的加密方式</string>
+
+    <!-- wifi config -->
+    <string name="server_ip">服务器IP：</string>
+    <string name="server_port">服务器端口号：</string>
+
+    /*
+    * url
+    */
+    <string name="login_url">http://172.20.10.2:8080/NCD_Server/login</string>
+
+    <string name="title_activity_lunch">LunchActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="waitting_dialog_text">请等待。。。</string>
+
+    /*
+    * msg
+    */
+    <string name="msg_save_success">保存成功</string>
+
+    /*
+    * button text
+    */
+    <string name="button_back_text">返回</string>
+    <string name="button_cancel_text">取消</string>
+    <string name="button_confirm_text">确定</string>
+    <string name="button_save_text">保存</string>
+    <string name="button_unsave_text">取消保存</string>
+    <string name="button_connect_text">连接</string>
+
+    /*
+    * dialog title
+    */
+    <string name="dialog_title_error_text">错误</string>
+    <string name="dialog_title_warn_text">警告</string>
+    <string name="dialog_title_info_text">信息</string>
+
+    /*
+    * dialog content
+    */
+    <string name="dialog_content_password_error_text">密码错误</string>
+    <string name="dialog_content_parm_error_text">参数错误</string>
+    <string name="dialog_content_save_fail_text">保存失败</string>
+    <string name="dialog_content_server_ip_error_text">服务器 IP 错误</string>
+    <string name="dialog_content_server_port_error_text">服务器 端口号 错误</string>
+
+
+</resources>

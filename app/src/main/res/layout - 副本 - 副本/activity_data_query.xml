@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.DataQueryActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_top_bottom" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/layoutTopHigh"
+        android:layout_marginBottom="@dimen/layoutBottomHigh"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_5"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingTop="@dimen/dp_5">
+
+            <TextView
+                android:id="@+id/testDateQueryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_20"
+                android:text="@string/QueryTestDateText"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/testDateQueryContentTextView"
+                android:layout_width="@dimen/dp_120"
+                android:layout_height="@dimen/dp_40"
+                android:layout_toEndOf="@id/testDateQueryTextView"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_20"
+                android:singleLine="true"
+                android:background="@color/grey"
+                android:paddingStart="@dimen/dp_5"
+                android:gravity="center_vertical"
+                android:text="2018-5-9"
+                android:layout_marginStart="@dimen/dp_5"/>
+            <ImageView
+                android:id="@+id/clearTestDateQueryImageView"
+                android:layout_width="@dimen/dp_35"
+                android:layout_height="@dimen/dp_35"
+                android:layout_centerVertical="true"
+                android:visibility="invisible"
+                android:layout_toEndOf="@id/testDateQueryContentTextView"
+                android:src="@mipmap/clear"/>
+
+            <TextView
+                android:id="@+id/testItemQueryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_20"
+                android:text="@string/QueryTestItemText"
+                android:layout_toRightOf="@id/testDateQueryContentTextView"
+                android:layout_marginStart="@dimen/dp_30"
+                android:layout_centerVertical="true"/>
+
+            <Spinner
+                android:id="@+id/testItemQuerySpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:layout_toEndOf="@id/testItemQueryTextView"
+                android:entries="@array/NCD_Test_Item_Array"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/sp_20"
+                android:layout_marginStart="@dimen/dp_5"/>
+            <ImageView
+                android:id="@+id/clearTestItemQueryImageView"
+                android:layout_width="@dimen/dp_35"
+                android:layout_height="@dimen/dp_35"
+                android:layout_centerVertical="true"
+                android:visibility="invisible"
+                android:layout_toEndOf="@id/testItemQuerySpinner"
+                android:src="@mipmap/clear"/>
+
+            <TextView
+                android:id="@+id/testSampleIdQueryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_20"
+                android:text="@string/QueryTestSampleIdText"
+                android:layout_toRightOf="@id/testItemQuerySpinner"
+                android:layout_marginStart="@dimen/dp_30"
+                android:layout_centerVertical="true"/>
+
+            <EditText
+                android:id="@+id/testSampleIdQueryEditText"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/testSampleIdQueryTextView"
+                android:layout_centerVertical="true"
+                android:singleLine="true"
+                android:textSize="@dimen/sp_16"
+                android:layout_marginStart="@dimen/dp_5"/>
+            <ImageView
+                android:id="@+id/clearTestSampleQueryImageView"
+                android:layout_width="@dimen/dp_35"
+                android:layout_height="@dimen/dp_35"
+                android:layout_centerVertical="true"
+                android:visibility="invisible"
+                android:layout_toEndOf="@id/testSampleIdQueryEditText"
+                android:src="@mipmap/clear"/>
+
+            <ImageView
+                android:id="@+id/reportCheckQueryImageView"
+                android:layout_width="@dimen/dp_35"
+                android:layout_height="@dimen/dp_35"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/clearTestSampleQueryImageView"
+                android:layout_marginStart="@dimen/dp_30"
+                android:src="@mipmap/record"/>
+
+
+            <ImageView
+                android:id="@+id/prePageImageView"
+                android:layout_width="@dimen/dp_35"
+                android:layout_height="@dimen/dp_35"
+                android:src="@mipmap/arrow_left"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/currentPageIndexTextView"/>
+
+            <TextView
+                android:id="@+id/currentPageIndexTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/nextPageImageView"
+                android:text="Page:1"
+                android:textSize="@dimen/sp_20"/>
+
+            <ImageView
+                android:id="@+id/nextPageImageView"
+                android:layout_width="@dimen/dp_35"
+                android:layout_height="@dimen/dp_35"
+                android:src="@mipmap/arrow_right"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/queryDataButton"/>
+
+            <Button
+                android:id="@+id/queryDataButton"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/createTestDataButton"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dp_50"
+                android:text="@string/QueryDataButtonText"/>
+
+            <Button
+                android:id="@+id/createTestDataButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:text="创建新数据"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/sp_24"
+                android:gravity="center"
+                android:text="@string/DataTableIndexTitleText"/>
+
+            <TextView
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textSize="@dimen/sp_24"
+                android:gravity="center"
+                android:text="@string/DataTableItemTitleText"/>
+
+            <TextView
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textSize="@dimen/sp_24"
+                android:gravity="center"
+                android:text="@string/DataTableSampleIdTitleText"/>
+
+            <TextView
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textSize="@dimen/sp_24"
+                android:gravity="center"
+                android:text="@string/DataTableResultTitleText"/>
+
+            <TextView
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textSize="@dimen/sp_24"
+                android:gravity="center"
+                android:text="@string/DataTableDateTitleText"/>
+
+            <TextView
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/sp_24"
+                android:gravity="center"
+                android:text="@string/DataTableTesterTitleText"/>
+
+            <TextView
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/sp_24"
+                android:gravity="center"
+                android:text="@string/DataTableReportStatusTitleText"/>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/dataRecycerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:descendantFocusability="blocksDescendants">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

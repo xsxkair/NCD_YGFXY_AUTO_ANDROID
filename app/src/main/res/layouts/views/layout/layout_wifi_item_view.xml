@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/dp_10"
+    android:paddingBottom="@dimen/dp_10">
+
+    <ImageView
+        android:id="@+id/wifi_sigal_imageview"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
+        android:src="@drawable/ic_wifi_lock_signal_0_light"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_30"/>
+
+    <TextView
+        android:id="@+id/wifi_ssid_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_20"
+        android:text="@string/DataTableIndexTitleText"
+        android:layout_toEndOf="@id/wifi_sigal_imageview"/>
+
+    <TextView
+        android:id="@+id/wifi_state_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_16"
+        android:text="@string/DataTableItemTitleText"
+        android:layout_below="@id/wifi_ssid_textview"
+        android:layout_alignStart="@id/wifi_ssid_textview"/>
+
+</RelativeLayout>

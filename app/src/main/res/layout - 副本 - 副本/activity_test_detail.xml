@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.TestDetailActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_top_bottom" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/layoutTopHigh"
+        android:layout_marginBottom="@dimen/layoutBottomHigh"
+        android:orientation="vertical">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/testDataLineChart"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_weight="3"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            android:background="@color/lightgreen"
+            android:paddingTop="@dimen/dp_20"
+            android:paddingLeft="@dimen/dp_10"
+            android:layout_weight="2">
+
+            <TextView
+                android:id="@+id/TestItemTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_15"
+                android:gravity="center"
+                android:text="@string/TestItemText"
+                android:textSize="@dimen/sp_20"/>
+
+            <TextView
+                android:id="@+id/TestItemContentTextView"
+                android:layout_width="@dimen/ReportResultShowWidth"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/TestItemTextView"
+                android:layout_alignBottom="@id/TestItemTextView"
+                android:layout_marginEnd="@dimen/dp_50"
+                android:text="@string/TestItemText"
+                android:textSize="@dimen/sp_24"
+                android:paddingLeft="@dimen/dp_10"
+                android:background="@drawable/text_view_shape"/>
+
+            <TextView
+                android:id="@+id/TestSampleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_15"
+                android:layout_below="@id/TestItemTextView"
+                android:gravity="center"
+                android:text="@string/TestSampleIdText"
+                android:textSize="@dimen/sp_20"/>
+
+            <TextView
+                android:id="@+id/TestSampleContentTextView"
+                android:layout_width="@dimen/ReportResultShowWidth"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/TestSampleTextView"
+                android:layout_alignBottom="@id/TestSampleTextView"
+                android:text="@string/TestItemText"
+                android:textSize="@dimen/sp_24"
+                android:paddingLeft="@dimen/dp_10"
+                android:background="@drawable/text_view_shape"/>
+
+            <TextView
+                android:id="@+id/TestCardTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_15"
+                android:layout_below="@id/TestSampleTextView"
+                android:gravity="center"
+                android:text="@string/TestCardIdText"
+                android:textSize="@dimen/sp_20"/>
+
+            <TextView
+                android:id="@+id/TestCardContentTextView"
+                android:layout_width="@dimen/ReportResultShowWidth"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/TestCardTextView"
+                android:layout_alignBottom="@id/TestCardTextView"
+                android:text="@string/TestItemText"
+                android:textSize="@dimen/sp_24"
+                android:paddingLeft="@dimen/dp_10"
+                android:background="@drawable/text_view_shape"/>
+
+            <TextView
+                android:id="@+id/TestTesterTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_15"
+                android:layout_below="@id/TestCardTextView"
+                android:gravity="center"
+                android:text="@string/TestTesterText"
+                android:textSize="@dimen/sp_20"/>
+
+            <TextView
+                android:id="@+id/TestTesterContentTextView"
+                android:layout_width="@dimen/ReportResultShowWidth"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/TestTesterTextView"
+                android:layout_alignBottom="@id/TestTesterTextView"
+                android:text="@string/TestItemText"
+                android:textSize="@dimen/sp_24"
+                android:paddingLeft="@dimen/dp_10"
+                android:background="@drawable/text_view_shape"/>
+
+            <TextView
+                android:id="@+id/TestTimeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_15"
+                android:layout_toEndOf="@id/TestItemContentTextView"
+                android:gravity="center"
+                android:text="@string/TestTimeText"
+                android:textSize="@dimen/sp_20"/>
+
+            <TextView
+                android:id="@+id/TestTimeContentTextView"
+                android:layout_width="@dimen/ReportResultShowWidth"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/TestTimeTextView"
+                android:layout_alignBottom="@id/TestTimeTextView"
+                android:text="@string/TestItemText"
+                android:textSize="@dimen/sp_24"
+                android:paddingLeft="@dimen/dp_10"
+                android:background="@drawable/text_view_shape"/>
+
+            <TextView
+                android:id="@+id/TestResultTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_15"
+                android:layout_below="@id/TestTimeTextView"
+                android:layout_alignStart="@id/TestTimeTextView"
+                android:gravity="center"
+                android:text="@string/TestResultText"
+                android:textSize="@dimen/sp_20"/>
+
+            <TextView
+                android:id="@+id/TestResultContentTextView"
+                android:layout_width="@dimen/ReportResultShowWidth"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/TestResultTextView"
+                android:layout_alignBottom="@id/TestResultTextView"
+                android:text="@string/TestItemText"
+                android:textSize="@dimen/sp_24"
+                android:paddingLeft="@dimen/dp_10"
+                android:background="@drawable/text_view_shape"/>
+
+            <TextView
+                android:id="@+id/TestNormalTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_below="@id/TestResultTextView"
+                android:layout_alignStart="@id/TestResultTextView"
+                android:layout_alignBottom="@id/TestNormalContentTextView"
+                android:gravity="center"
+                android:text="@string/TestNormalText"
+                android:textSize="@dimen/sp_20"/>
+
+            <TextView
+                android:id="@+id/TestNormalContentTextView"
+                android:layout_width="@dimen/ReportResultShowWidth"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/TestTimeContentTextView"
+                android:layout_alignTop="@id/TestCardContentTextView"
+                android:layout_alignBottom="@id/TestTesterTextView"
+                android:text="sada dasda sdasdasdasdsadasdasd"
+                android:textSize="@dimen/sp_24"
+                android:paddingLeft="@dimen/dp_10"
+                android:background="@drawable/text_view_shape"/>
+
+
+            <TextView
+                android:id="@+id/reportCheckTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:layout_toEndOf="@id/TestTimeContentTextView"
+                android:layout_alignTop="@id/TestTimeContentTextView"
+                android:layout_alignBottom="@id/reportCheckRadioGroup"
+                android:text="@string/ReportCheckText"
+                android:layout_marginStart="@dimen/dp_50"
+                android:gravity="center"
+                android:textSize="@dimen/sp_20"
+                android:layout_marginEnd="@dimen/dp_10"/>
+
+            <RadioGroup
+                android:id="@+id/reportCheckRadioGroup"
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/reportCheckTextView"
+                android:background="@drawable/text_view_shape"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/reportPassRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_24"
+                    android:text="@string/ReportPassText"/>
+
+                <RadioButton
+                    android:id="@+id/reportNoPassRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_24"
+                    android:text="@string/ReportNoPassText"/>
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/uploadReportButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/printfReportButton"
+                android:layout_alignBottom="@id/printfReportButton"
+                android:text="@string/UploadReportText"
+                android:textSize="@dimen/sp_24"/>
+
+            <Button
+                android:id="@+id/printfReportButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:text="@string/PrintfReportText"
+                android:textSize="@dimen/sp_24"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/ethernet_set_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/eth_set_text"
+        android:textSize="32sp"
+        android:textColor="@color/white"
+        android:background="@color/ncd_blue"
+        android:gravity="center"
+        android:paddingTop="@dimen/dp_20"
+        android:paddingBottom="@dimen/dp_20"/>
+
+    <LinearLayout
+        android:id="@+id/control_linearlayout"
+        android:layout_width="570dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/ethernet_set_dialog_title"
+        android:layout_marginTop="@dimen/dp_50"
+        android:layout_marginStart="@dimen/dp_50"
+        android:layout_marginEnd="@dimen/dp_50"
+        android:orientation="horizontal">
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/eth_connect_type_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/control_linearlayout"
+        android:layout_alignStart="@+id/control_linearlayout"
+        android:text="@string/eth_con_type"
+        android:textSize="@dimen/sp_24"/>
+
+    <Switch
+        android:id="@+id/eth_connect_type_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_50"
+        android:layout_toEndOf="@id/eth_connect_type_textview"
+        android:layout_alignBaseline="@id/eth_connect_type_textview"
+        android:layout_gravity="center"
+        android:textOff="@string/eth_con_type_static"
+        android:textOn="@string/eth_con_type_dhcp"
+        android:showText="true"
+        android:checked="true"
+        android:track="@drawable/eth_switch_track"
+        android:thumb="@drawable/eth_switch_thumb"/>
+
+
+    <TextView
+        android:id="@+id/eth_ip_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_below="@id/eth_connect_type_textview"
+        android:layout_alignStart="@+id/eth_connect_type_textview"
+        android:textSize="@dimen/sp_24"
+        android:text="@string/eth_ipaddr" />
+    <EditText android:id="@+id/ipaddr_edit"
+        android:layout_width="@dimen/dp_350"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/eth_connect_type_switch"
+        android:layout_alignBaseline="@id/eth_ip_textview"
+        android:textSize="@dimen/sp_20"
+        android:inputType="number"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/eth_dns_textview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_below="@id/eth_ip_textview"
+        android:layout_alignStart="@+id/eth_ip_textview"
+        android:textSize="@dimen/sp_24"
+        android:text="@string/eth_dns" />
+    <EditText android:id="@+id/eth_dns_edit"
+        android:layout_width="@dimen/dp_350"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/eth_dns_textview"
+        android:layout_alignStart="@id/eth_connect_type_switch"
+        android:textSize="@dimen/sp_20"
+        android:inputType="number"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/eth_gw_textview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_below="@id/eth_dns_textview"
+        android:layout_alignStart="@+id/eth_dns_textview"
+        android:textSize="@dimen/sp_24"
+        android:text="@string/eth_gw" />
+    <EditText android:id="@+id/eth_gw_edit"
+        android:layout_width="@dimen/dp_350"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/eth_gw_textview"
+        android:layout_alignStart="@id/eth_connect_type_switch"
+        android:textSize="@dimen/sp_20"
+        android:inputType="number"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/eth_mask_length_textview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_below="@id/eth_gw_textview"
+        android:layout_alignStart="@+id/eth_gw_textview"
+        android:text="@string/eth_network_prefix_length"
+        android:textSize="@dimen/sp_24"/>
+    <EditText android:id="@+id/eth_mask_length_edit"
+        android:layout_width="@dimen/dp_350"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/eth_mask_length_textview"
+        android:layout_alignStart="@id/eth_connect_type_switch"
+        android:textSize="@dimen/sp_20"
+        android:inputType="number"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/ethSaveConfigButton"
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eth_mask_length_textview"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_30"
+        android:text="@string/button_save_text"
+        android:background="@drawable/button_background"
+        android:layout_marginEnd="@dimen/dp_100"
+        android:layout_marginTop="@dimen/dp_50"/>
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dp_100"
+        android:layout_toStartOf="@id/ethSaveConfigButton"
+        android:layout_alignBaseline="@id/ethSaveConfigButton"
+        android:background="@drawable/button_background"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_30"
+        android:text="@string/cancelButtonText"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.AboutUsActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_top_bottom" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/AboutUsContentBottomHigh"
+        android:layout_marginTop="@dimen/AboutUsContentTopHigh"
+        android:layout_marginStart="@dimen/dp_100"
+        android:layout_marginEnd="@dimen/dp_100"
+        android:background="@color/ncd_blue">
+
+        <ImageView
+            android:layout_width="125dp"
+            android:layout_height="@dimen/dp_100"
+            android:src="@drawable/logo2"/>
+        
+        <ImageView
+            android:id="@+id/ncdQrImageView"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_100"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:layout_alignParentBottom="true"/>
+
+        <TextView
+            android:id="@+id/highline1"
+            android:layout_width="@dimen/dp_2"
+            android:layout_height="match_parent"
+            android:background="#3379DF"
+            android:layout_toEndOf="@id/ncdQrImageView"
+            android:layout_marginStart="@dimen/dp_20"/>
+        <TextView
+            android:id="@+id/highline2"
+            android:layout_width="@dimen/dp_2"
+            android:layout_height="match_parent"
+            android:background="@android:color/black"
+            android:layout_toEndOf="@id/highline1"/>
+
+        <TextView
+            android:id="@+id/ncdNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ConmpanyNameText"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_14"
+            android:layout_toEndOf="@id/highline2"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_30"
+            android:layout_marginBottom="@dimen/dp_20"/>
+
+        <TextView
+            android:id="@+id/ncdAddrTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ConmpanyAddrText"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_14"
+            android:layout_below="@id/ncdNameTextView"
+            android:layout_alignStart="@id/ncdNameTextView"
+            android:layout_marginBottom="@dimen/dp_20"/>
+
+        <TextView
+            android:id="@+id/ncdPhoneTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ConmpanyPhoneText"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_14"
+            android:layout_below="@id/ncdAddrTextView"
+            android:layout_alignStart="@id/ncdNameTextView"
+            android:layout_marginBottom="@dimen/dp_20"/>
+
+        <TextView
+            android:id="@+id/ncdEmailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ConmpanyEmailText"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_14"
+            android:layout_below="@id/ncdPhoneTextView"
+            android:layout_alignStart="@id/ncdNameTextView"
+            android:layout_marginBottom="@dimen/dp_20"/>
+
+        <TextView
+            android:id="@+id/ncdWebsiteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ConmpanyWebText"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_14"
+            android:layout_below="@id/ncdEmailTextView"
+            android:layout_alignStart="@id/ncdNameTextView"
+            android:layout_marginBottom="@dimen/dp_20"/>
+
+        <TextView
+            android:id="@+id/softVersionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/SoftVersionText"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_14"
+            android:layout_below="@id/ncdWebsiteTextView"
+            android:layout_alignStart="@id/ncdNameTextView"
+            android:layout_marginBottom="@dimen/dp_20"/>
+
+        <TextView
+            android:id="@+id/softVersionValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/SoftVersionText"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_14"
+            android:layout_toRightOf="@id/softVersionTextView"
+            android:layout_alignBaseline="@+id/softVersionTextView"
+            android:layout_marginBottom="@dimen/dp_20"/>
+
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

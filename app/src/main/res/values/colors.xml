@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="light_Red">#FFE7E7</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="white">#ffffff</color>
+
+    <color name="ncd_blue">#1B3F82</color>
+    <color name="button_no_pressed">#1b3f82</color>
+    <color name="button_no_enable">#B3BBBB</color>
+    <color name="button_pressed">#bac7de</color>
+    <color name="lightgreen">#13C7AF</color>
+    <color name="LineChartGridLineColor">#E7E7E7</color>
+    <color name="LineChartBackgroundColor">#F4F4F4</color>
+    <color name="LineChartSeriaColor">#FBA71B</color>
+    <color name="green">#00FF00</color>
+    <color name="green1">#48CB89</color>
+    <color name="light_green">#E0FCDE</color>
+    <color name="grey">#B3BBBB</color>
+
+    <color name="dialog_default_background">#ECECEC</color>
+    <color name="dialog_split_line">#D7D7D7</color>
+    <color name="dialog_button_text">#3390FA</color>
+    
+    <color name="my_blue">#1b3f82</color>
+</resources>

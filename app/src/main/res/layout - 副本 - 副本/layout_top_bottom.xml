@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layoutTopHigh"
+        android:background="@color/ncd_blue">
+
+        <ImageView
+            android:layout_width="62dp"
+            android:layout_height="48dp"
+            android:background="@drawable/logo_s"
+            android:layout_marginLeft="@dimen/dp_30"/>
+
+        <ImageView
+            android:layout_width="236dp"
+            android:layout_height="@dimen/dp_35"
+            android:background="@drawable/better_dectevtion"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dp_200"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorRed"
+            />
+
+    </RelativeLayout>
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layoutBottomHigh"
+        android:gravity="center_vertical"
+        android:background="@color/ncd_blue"
+        android:layout_alignParentBottom="true"
+        android:text="@string/ncd_company_name_text"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:paddingLeft="@dimen/dp_20"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/layoutBottomHigh"
+        android:gravity="center_vertical"
+        android:background="@color/ncd_blue"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/app_version"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:paddingRight="@dimen/dp_20"/>
+</RelativeLayout>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.UserManagementActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_top_bottom" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/layoutBottomHigh"
+        android:layout_marginTop="@dimen/layoutTopHigh"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp_50"
+            android:paddingRight="@dimen/dp_50">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/userListText"
+                    android:textSize="32sp"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/addUserImageView"
+                    android:layout_width="@dimen/dp_35"
+                    android:layout_height="@dimen/dp_35"
+                    android:src="@drawable/plus"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:id="@+id/freshUserListImageView"
+                    android:layout_width="@dimen/dp_35"
+                    android:layout_height="@dimen/dp_35"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:src="@mipmap/fresh"/>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/userRecyclerView"
+                android:layout_width="@dimen/userListViewWidth"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/grey">
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:paddingStart="@dimen/dp_5"
+            android:paddingEnd="@dimen/dp_50">
+
+
+            <TextView
+                android:id="@+id/userNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_20"
+                android:text="@string/userNameText"
+                android:textSize="24sp"/>
+            <EditText
+                android:id="@+id/userNameEditView"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/userNameTextView"
+                android:layout_alignBaseline="@id/userNameTextView"
+                android:singleLine="true"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/userIdTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userNameTextView"
+                android:layout_alignStart="@id/userNameTextView"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:text="@string/userIdText"
+                android:textSize="24sp"/>
+            <EditText
+                android:id="@+id/userIdEditView"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/userIdTextView"
+                android:layout_alignStart="@id/userNameEditView"
+                android:singleLine="true"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/userAgeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userIdTextView"
+                android:layout_alignStart="@id/userNameTextView"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:text="@string/userAgeText"
+                android:textSize="24sp"/>
+            <EditText
+                android:id="@+id/userAgeEditView"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/userAgeTextView"
+                android:layout_alignStart="@id/userNameEditView"
+                android:singleLine="true"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/userSexTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userAgeTextView"
+                android:layout_alignStart="@id/userNameTextView"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:text="@string/userSexText"
+                android:textSize="24sp"/>
+            <RadioGroup
+                android:id="@+id/userSexRadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_30"
+                android:layout_alignBottom="@id/userSexTextView"
+                android:layout_alignStart="@id/userNameEditView"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/userSexMenRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/dp_5"
+                    android:paddingEnd="@dimen/dp_30"
+                    android:text="@string/userSexMen"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/userSexWomenRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/dp_5"
+                    android:text="@string/userSexWomen"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/userPhoneTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userSexTextView"
+                android:layout_alignStart="@id/userNameTextView"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:text="@string/userPhoneText"
+                android:textSize="24sp"/>
+            <EditText
+                android:id="@+id/userPhoneEditText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/userPhoneTextView"
+                android:layout_alignStart="@id/userNameEditView"
+                android:singleLine="true"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/userDepTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userPhoneTextView"
+                android:layout_alignStart="@id/userNameTextView"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:text="@string/userDepText"
+                android:textSize="24sp"/>
+            <EditText
+                android:id="@+id/userDepEditText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/userDepTextView"
+                android:layout_alignStart="@id/userNameEditView"
+                android:singleLine="true"
+                android:textSize="24sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userDepTextView"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/deleteUserButton"
+                    android:layout_width="@dimen/dp_150"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_100"
+                    android:background="@drawable/button_background"
+                    android:textColor="@color/colorRed"
+                    android:textSize="24sp"
+                    android:text="@string/deleteUserButtonText"/>
+
+                <Button
+                    android:id="@+id/submitUserButton"
+                    android:layout_width="@dimen/dp_150"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:text="@string/submitButtonText"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+</FrameLayout>

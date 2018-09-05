@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer-array name="lunch_view_pager_item_ids">
+        <item>@drawable/lunch_item1</item>
+        <item>@drawable/lunch_item2</item>
+        <item>@drawable/lunch_item3</item>
+        <item>@drawable/lunch_item4</item>
+    </integer-array>
+
+    <string-array name="NCD_Test_Item_Array">
+        <item>ALL</item>
+        <item>NTpro-BNP</item>
+        <item>Myo</item>
+        <item>cTnI</item>
+        <item>CK-MB</item>
+    </string-array>
+
+    <string-array name="net_set_menu_items">
+        <item>WLAN</item>
+        <item>Ethernet</item>
+        <item>Server</item>
+    </string-array>
+
+    <string-array name="data_item_long_press_action_menu">
+        <item>删除</item>
+        <item>上传</item>
+        <item>打印</item>
+    </string-array>
+
+</resources>

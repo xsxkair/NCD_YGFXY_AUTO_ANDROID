@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    tools:context=".Activitys.DeviceInfoActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_top_bottom" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/radius_shape"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_50"
+        android:layout_marginStart="@dimen/dp_500">
+
+        <ImageView
+            android:id="@+id/deviceInfoSetImageView"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_100"
+            android:src="@drawable/device_set"/>
+
+        <Switch
+            android:id="@+id/modifyDeviceInfoSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"/>
+
+        <TextView
+            android:id="@+id/deviceNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/DeviceNameText"
+            android:layout_toEndOf="@id/deviceInfoSetImageView"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20"
+            android:layout_marginStart="@dimen/dp_50"
+            android:layout_marginEnd="@dimen/dp_15"
+            android:layout_marginTop="@dimen/dp_30"
+            android:layout_marginBottom="@dimen/dp_10"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/deviceNameTextView"
+            android:layout_alignBottom="@id/deviceNameTextView"
+            android:text="@string/device_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20"/>
+
+        <TextView
+            android:id="@+id/deviceIdTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/DeviceIdText"
+            android:layout_below="@id/deviceNameTextView"
+            android:layout_alignStart="@id/deviceNameTextView"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20"
+            android:layout_marginEnd="@dimen/dp_15"
+            android:layout_marginBottom="@dimen/dp_10"/>
+        <TextView
+            android:id="@+id/deviceIdValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/deviceIdTextView"
+            android:layout_toEndOf="@id/deviceIdTextView"
+            android:text="@string/device_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20"/>
+
+        <TextView
+            android:id="@+id/deviceAddrTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/DeviceAddrText"
+            android:layout_below="@id/deviceIdTextView"
+            android:layout_alignStart="@id/deviceNameTextView"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20"
+            android:layout_marginEnd="@dimen/dp_15"
+            android:layout_marginBottom="@dimen/dp_10"/>
+        <EditText
+            android:id="@+id/deviceAddrEditText"
+            android:layout_width="@dimen/dp_300"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/deviceAddrTextView"
+            android:layout_toEndOf="@id/deviceAddrTextView"
+            android:text="@string/device_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20"
+            android:background="@drawable/editview_style"/>
+
+        <TextView
+            android:id="@+id/deviceUserTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/DeviceUserText"
+            android:layout_below="@id/deviceAddrTextView"
+            android:layout_alignStart="@id/deviceNameTextView"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20"
+            android:layout_marginEnd="@dimen/dp_15"
+            android:layout_marginBottom="@dimen/dp_10"/>
+        <EditText
+            android:id="@+id/deviceUserEditText"
+            android:layout_width="@dimen/dp_300"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/deviceUserTextView"
+            android:layout_toEndOf="@id/deviceNameTextView"
+            android:text="@string/DeviceUserText"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20"
+            android:background="@drawable/editview_style"/>
+
+        <TextView
+            android:id="@+id/devicePhoneTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/DevicePhoneText"
+            android:layout_below="@id/deviceUserTextView"
+            android:layout_alignStart="@id/deviceNameTextView"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20"
+            android:layout_marginEnd="@dimen/dp_15"/>
+        <EditText
+            android:id="@+id/devicePhoneEditText"
+            android:layout_width="@dimen/dp_300"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/devicePhoneTextView"
+            android:layout_toEndOf="@id/devicePhoneTextView"
+            android:text="@string/device_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20"
+            android:layout_marginEnd="@dimen/dp_15"
+            android:background="@drawable/editview_style"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

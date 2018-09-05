@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.SettingActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_top_bottom" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_223"
+        android:layout_marginEnd="@dimen/dp_223"
+        app:flexWrap="wrap"
+        app:justifyContent="space_between"
+        app:alignItems="baseline"
+        android:layout_centerInParent="true">
+
+        <Button
+            android:id="@+id/device_info_button"
+            android:layout_width="@dimen/dp_278"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_60"
+            android:text="@string/setting_menu_device_info_text"
+            android:background="@null"
+            android:textSize="@dimen/sp_20"
+            android:textColor="@color/my_blue"
+            android:drawableTop="@drawable/set_device_info_button"/>
+
+        <Button
+            android:id="@+id/user_set_button"
+            android:layout_width="@dimen/dp_278"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_60"
+            android:text="@string/setting_menu_user_set_text"
+            android:background="@null"
+            android:textSize="@dimen/sp_20"
+            android:textColor="@color/my_blue"
+            android:drawableTop="@drawable/set_user_set_button"/>
+
+        <Button
+            android:id="@+id/net_set_button"
+            android:layout_width="@dimen/dp_278"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_60"
+            android:text="@string/setting_menu_net_set_text"
+            android:background="@null"
+            android:textSize="@dimen/sp_20"
+            android:textColor="@color/my_blue"
+            android:drawableTop="@drawable/set_net_set_button"/>
+
+        <Button
+            android:id="@+id/data_query_button"
+            android:layout_width="@dimen/dp_278"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_60"
+            android:text="@string/setting_menu_data_query_text"
+            android:background="@null"
+            android:textSize="@dimen/sp_20"
+            android:textColor="@color/my_blue"
+            android:drawableTop="@drawable/set_data_query_button"/>
+
+        <Button
+            android:id="@+id/more_set_button"
+            android:layout_width="@dimen/dp_278"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_60"
+            android:text="@string/setting_menu_other_set_text"
+            android:background="@null"
+            android:textSize="@dimen/sp_20"
+            android:textColor="@color/my_blue"
+            android:drawableTop="@drawable/set_other_set_button"/>
+
+        <Button
+            android:id="@+id/about_us_button"
+            android:layout_width="@dimen/dp_278"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_60"
+            android:text="@string/setting_menu_about_us_text"
+            android:background="@null"
+            android:textSize="@dimen/sp_20"
+            android:textColor="@color/my_blue"
+            android:drawableTop="@drawable/set_about_us_button"/>
+    </com.google.android.flexbox.FlexboxLayout>
+
+</RelativeLayout>

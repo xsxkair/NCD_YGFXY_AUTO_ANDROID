@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc">
+
+    <ViewFlipper
+        android:id="@+id/viewFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inAnimation="@anim/lunch_right_in"
+        android:outAnimation="@anim/lunch_right_out"
+        android:flipInterval="3000">
+
+        <include layout="@layout/lunch_view_pager_item1" />
+
+        <include layout="@layout/lunch_view_pager_item2" />
+
+        <include layout="@layout/lunch_view_pager_item3" />
+
+        <include layout="@layout/lunch_view_pager_item4" />
+
+    </ViewFlipper>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/systeminitTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/system_init_text"
+            android:textSize="24sp"
+            android:textColor="@color/colorAccent"/>
+    </RelativeLayout>
+</FrameLayout>

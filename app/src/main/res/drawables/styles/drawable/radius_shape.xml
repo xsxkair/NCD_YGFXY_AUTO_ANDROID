@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 填充的颜色 -->
+    <solid android:color="@color/ncd_blue"/>
+
+    <!-- 设置按钮的四个角为弧形 -->
+    <!-- android:radius 弧形的所有半径 -->
+    <corners android:radius="@dimen/button_radius_dp10"/>
+
+    <!-- 边框的宽度及颜色 -->
+    <stroke
+        android:width="@dimen/button_strok_width_dp0.1"
+        android:color="@color/colorPrimary"/>
+
+    <padding
+        android:bottom="@dimen/button_shap_padding_top_bottom"
+        android:top="@dimen/button_shap_padding_top_bottom"
+        android:left="@dimen/button_shap_padding_left_right"
+        android:right="@dimen/button_shap_padding_left_right"/>
+</shape>
