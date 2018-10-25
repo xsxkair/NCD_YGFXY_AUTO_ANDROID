@@ -2,6 +2,7 @@ package com.ncd.xsx.ncd_ygfxy.Databases.Entity;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.ncd.xsx.ncd_ygfxy.Defines.ItemConstData;
 
 import java.sql.Date;
 
@@ -14,24 +15,6 @@ public class Card extends BaseEntity{
 
 	@DatabaseField(width = 20)
 	private String pihao;
-
-	@DatabaseField(width = 20)
-	private String item;
-
-	@DatabaseField
-	private Integer pointnum;
-
-	@DatabaseField
-	private float lowestresult;
-
-	@DatabaseField
-	private float highestresult;
-
-	@DatabaseField(width = 100)
-	private String normalresult;
-
-	@DatabaseField(width = 20)
-	private String measure;
 
 	@DatabaseField
 	private Integer channel;
@@ -102,6 +85,26 @@ public class Card extends BaseEntity{
 	@DatabaseField
 	private String qu3_d;
 
+	@DatabaseField
+	private Integer itemindex;
+
+	private ItemConstData itemConstData;
+
+	public Card(){
+
+	}
+
+	public Card(ItemConstData itemConstData){
+		this.itemConstData = itemConstData;
+		this.itemindex = itemConstData.getIndex();
+	}
+
+	public Card(String item){
+
+		this.itemConstData = ItemConstData.getItemConstDataByName(item);
+		this.itemindex = this.itemConstData.getIndex();
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -116,54 +119,6 @@ public class Card extends BaseEntity{
 
 	public void setPihao(String pihao) {
 		this.pihao = pihao;
-	}
-
-	public String getItem() {
-		return item;
-	}
-
-	public void setItem(String item) {
-		this.item = item;
-	}
-
-	public Integer getPointnum() {
-		return pointnum;
-	}
-
-	public void setPointnum(Integer pointnum) {
-		this.pointnum = pointnum;
-	}
-
-	public float getLowestresult() {
-		return lowestresult;
-	}
-
-	public void setLowestresult(float lowestresult) {
-		this.lowestresult = lowestresult;
-	}
-
-	public float getHighestresult() {
-		return highestresult;
-	}
-
-	public void setHighestresult(float highestresult) {
-		this.highestresult = highestresult;
-	}
-
-	public String getNormalresult() {
-		return normalresult;
-	}
-
-	public void setNormalresult(String normalresult) {
-		this.normalresult = normalresult;
-	}
-
-	public String getMeasure() {
-		return measure;
-	}
-
-	public void setMeasure(String measure) {
-		this.measure = measure;
 	}
 
 	public Integer getChannel() {
@@ -350,13 +305,19 @@ public class Card extends BaseEntity{
 		this.qu3_d = qu3_d;
 	}
 
-	@Override
-	public String toString() {
-		return "Card{" +
-				"id=" + id +
-				", item='" + item + '\'' +
-				", lowestresult=" + lowestresult +
-				", measure='" + measure + '\'' +
-				'}';
+	public Integer getItemindex() {
+		return itemindex;
+	}
+
+	public void setItemindex(Integer itemindex) {
+		this.itemindex = itemindex;
+	}
+
+	public ItemConstData getItemConstData() {
+		return itemConstData;
+	}
+
+	public void setItemConstData(ItemConstData itemConstData) {
+		this.itemConstData = itemConstData;
 	}
 }

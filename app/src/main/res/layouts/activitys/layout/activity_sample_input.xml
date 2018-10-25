@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_top_bottom" />
+    
+    <TextView
+        android:id="@+id/sample_input_title_textview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_58"
+        android:text="@string/sample_input_activity_title"
+        android:textSize="@dimen/sp_30"
+        android:textColor="@color/white"
+        android:background="@color/ncd_blue"
+        android:layout_marginTop="@dimen/dp_58"
+        android:gravity="center"/>
+
+    <ImageButton
+        android:id="@+id/add_sample_imagebutton"
+        android:layout_width="@dimen/dp_33"
+        android:layout_height="@dimen/dp_33"
+        android:src="@drawable/plus"
+        android:layout_alignBottom="@id/sample_input_title_textview"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_alignParentRight="true"
+        android:background="@null"/>
+
+    <LinearLayout
+        android:id="@+id/table_header_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        android:background="@color/ncd_blue"
+        android:layout_below="@id/sample_input_title_textview"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:textSize="@dimen/sp_25"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:text="@string/sample_index_string"/>
+
+        <TextView
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:textSize="@dimen/sp_25"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:text="@string/sample_id_string"/>
+
+        <TextView
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:textSize="@dimen/sp_25"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:text="@string/sample_sickid_string"/>
+
+        <TextView
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/sp_25"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:text="@string/sample_bed_num_string"/>
+
+        <TextView
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:textSize="@dimen/sp_25"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:text="@string/sample_name_string"/>
+
+        <TextView
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:textSize="@dimen/sp_25"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:text="@string/sample_item_string"/>
+
+        <TextView
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/sp_25"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:text="@string/sample_test_state_string"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/sample_data_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/table_header_linearlayout"
+        android:layout_marginBottom="@dimen/layoutBottomHigh"
+        android:background="@color/white">
+
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>

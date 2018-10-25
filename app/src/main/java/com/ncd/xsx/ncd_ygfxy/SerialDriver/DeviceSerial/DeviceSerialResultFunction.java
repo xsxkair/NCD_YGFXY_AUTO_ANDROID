@@ -21,7 +21,7 @@ public class DeviceSerialResultFunction<T extends DeviceSerialEntity, R> impleme
         Gson gson = new Gson();
 
         try{
-            dataStr = new String(result.getData());
+            dataStr = new String(result.data);
         }catch (Exception e){
             throw new Exception("recv data can not be changed to string");
         }

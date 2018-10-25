@@ -43,7 +43,7 @@
     <string name="setting_menu_user_set_text">操作人管理</string>
     <string name="setting_menu_net_set_text">网络设置</string>
     <string name="setting_menu_data_query_text">数据查询</string>
-    <string name="setting_menu_other_set_text">其他设置</string>
+    <string name="setting_menu_other_set_text">系统设置</string>
     <string name="setting_menu_about_us_text">关于</string>
     <string name="setting_menu_net_select_dialog_title">请选择</string>
 
@@ -112,59 +112,50 @@
     <string name="SoftVersionText">软件版本：</string>
 
     /*
-    * device info activity
+    * sample input activity
     /
-    <string name="DeviceNameText">设备名称:</string>
-    <string name="DeviceIdText">设备编号:</string>
-    <string name="DeviceAddrText">设备地址:</string>
-    <string name="DeviceUserText">责&#160;&#160;&#160;任&#160;&#160;人:</string>
-    <string name="DevicePhoneText">联系方式:</string>
-    <string name="CheckPermissionText">确认权限</string>
-    <string name="PleaseInputPassword">请输入密码:</string>
-    <string name="ConfirmDialogTag">confirmdialog</string>
-    <string name="InputDialogTag">inputdialog</string>
+    <string name="sample_input_activity_title">样品录入</string>
+    <string name="sample_index_string">序号</string>
+    <string name="sample_id_string">样品编号</string>
+    <string name="sample_sickid_string">病人编号</string>
+    <string name="sample_bed_num_string">病人床号</string>
+    <string name="sample_name_string">病人姓名</string>
+    <string name="sample_item_string">检测项目</string>
+    <string name="sample_test_state_string">状态</string>
+    <string name="sample_state_no_conf">未配置</string>
+    <string name="sample_state_wait">等待中</string>
 
-    <!-- eth config -->
-    <string name="eth_switch_text">Ethernet开关</string>
-    <string name="eth_set_text">Ethernet设置</string>
-    <string name="eth_con_text">Ethernet Configure</string>
-    <string name="eth_config">有线网设置</string>
-    <string name="eth_con_type">Connect type：</string>
-    <string name="eth_con_type_dhcp">DHCP</string>
-    <string name="eth_con_type_static">Static</string>
-    <string name="eth_mask">Mask address:</string>
-    <string name="eth_dns">DNS address：</string>
-    <string name="eth_gw">Gateway address：</string>
-    <string name="eth_ipaddr">IP address：</string>
-    <string name="eth_network_prefix_length">Prefix length：</string>
-    <string name="eth_on_text">on</string>
-    <string name="eth_off_text">off</string>
-    <string name="eth_settings_empty">can\'t be empty</string>
-    <string name="eth_settings_error">Failed to set: Please enter the valid characters 0~255</string>
 
-    <!-- wifi config -->
-    <string name="wifi_switch_text">WLAN开关</string>
-    <string name="wifi_msg_error">WLAN错误</string>
-    <string name="wifi_msg_openning">正在打开WLAN</string>
-    <string name="wifi_msg_closing">正在关闭WLAN</string>
-    <string name="wifi_msg_opened">WLAN已打开</string>
-    <string name="wifi_msg_closed">WLAN已关闭</string>
-    <string name="wifi_msg_scan_fail">扫描失败</string>
-    <string name="wifi_status_saved">已保存</string>
-    <string name="wifi_status_connected">已连接</string>
-    <string name="wifi_status_disconnected">已断开</string>
-    <string name="wifi_action_dialog_title">请选择</string>
-    <string name="wifi_dialog_title">请输入</string>
-    <string name="wifi_dialog_input_label">WIFI密码：</string>
-    <string name="wifi_state_connecting">连接中...</string>
-    <string name="wifi_state_AUTHENTICATING">正在验证身份信息...</string>
-    <string name="wifi_state_OBTAINING_IPADDR">正在获取IP地址...</string>
-    <string name="wifi_state_FAILED">连接失败</string>
-    <string name="wifi_unsuport_security">不支持的加密方式</string>
+    <string name="sample_id_input_string">样品编号：</string>
+    <string name="sample_name_input_string">姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;名：</string>
+    <string name="sample_sex_input_string">性&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;别：</string>
+    <string name="sample_age_input_string">年&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;龄：</string>
+    <string name="sample_bednum_input_string">床&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;号：</string>
+    <string name="sample_sickid_input_string">病&#160;&#160;案&#160;&#160;号：</string>
+    <string name="sample_items_input_string">测试项目：</string>
 
-    <!-- wifi config -->
-    <string name="server_ip">服务器IP：</string>
-    <string name="server_port">服务器端口号：</string>
+    <!-- system set activity -->
+    <string name="device_id_set_title">设备编号</string>
+    <string name="device_user_set_title">责任人</string>
+    <string name="device_addr_set_title">设备地址</string>
+    <string name="auto_print_set_title">自动打印</string>
+    <string name="server_ip_set_title">数据上传IP地址</string>
+    <string name="server_port_set_title">数据上传端口</string>
+    <string name="wlan_set_title">WLAN设置</string>
+    <string name="ethernet_set_title">ETHERNET设置</string>
+    <string name="date_time_set_title">时间设置</string>
+    <string name="soft_version_title">软件版本</string>
+    <string name="root_passwd_text">管理员密码</string>
+    <string name="preference_dialog_title">编辑</string>
+    <string name="preference_dialog_submit_text">确定</string>
+    <string name="preference_dialog_cancel_text">取消</string>
+
+
+
+    <!-- motor test -->
+    <string name="select_motor_string">选择电机：</string>
+    <string name="motor_input_num_hint_string">运行步数</string>
+    <string name="start_motor_button_string">启动</string>
 
     /*
     * url
@@ -193,6 +184,8 @@
     <string name="button_save_text">保存</string>
     <string name="button_unsave_text">取消保存</string>
     <string name="button_connect_text">连接</string>
+    <string name="button_add_text">添加</string>
+    <string name="button_end_text">完成</string>
 
     /*
     * dialog title
@@ -210,5 +203,24 @@
     <string name="dialog_content_server_ip_error_text">服务器 IP 错误</string>
     <string name="dialog_content_server_port_error_text">服务器 端口号 错误</string>
 
+    /*
+    * default value
+    */
+    <string name="device_id_key">device_id</string>
+    <string name="device_user_key">device_user</string>
+    <string name="device_addr_key">device_addr</string>
+    <string name="auto_print_key">auto_print</string>
+    <string name="server_ip_key">server_ip</string>
+    <string name="server_port_key">server_port</string>
+    <string name="wlan_set_key">wlan_set</string>
+    <string name="ethernet_set_key">ethernet_set</string>
+    <string name="datetime_set_key">datetime_set</string>
+
+    <string name="def_device_id">ygfxy3</string>
+    <string name="def_device_user">ygfxy3</string>
+    <string name="def_device_addr">ygfxy3</string>
+    <bool name="def_auto_print">true</bool>
+    <string name="def_server_ip">192.168.1.1</string>
+    <string name="def_server_port">9200</string>
 
 </resources>

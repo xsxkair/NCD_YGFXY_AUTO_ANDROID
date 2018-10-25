@@ -16,6 +16,7 @@ import com.ncd.xsx.ncd_ygfxy.Activitys.Listeners.OnViewItemClickListener;
 import com.ncd.xsx.ncd_ygfxy.Databases.Services.UserService;
 import com.ncd.xsx.ncd_ygfxy.R;
 import com.ncd.xsx.ncd_ygfxy.Databases.Entity.User;
+import com.ncd.xsx.ncd_ygfxy.Services.TestService.TestFunction;
 
 import java.util.List;
 
@@ -45,6 +46,8 @@ public class SelectUserActivity extends MyActivity {
             @Override
             public void onItemClick(View view, int position, User user) {
                 Log.d("xsx", "click: "+user.getName());
+                TestFunction.getInstance().setCurrentTester(user);
+                startActivity(new Intent(SelectUserActivity.this, SampleInputActivity.class));
             }
         });
         userRecyclerView.setAdapter(userAdapter);

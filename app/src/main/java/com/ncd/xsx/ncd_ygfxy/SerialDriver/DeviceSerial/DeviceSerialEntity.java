@@ -1,123 +1,155 @@
 package com.ncd.xsx.ncd_ygfxy.SerialDriver.DeviceSerial;
 
+import android.util.Log;
+
+import com.ncd.xsx.ncd_ygfxy.Logger.LoggerUnits;
 import com.ncd.xsx.ncd_ygfxy.Tools.CheckSum;
+import com.ncd.xsx.ncd_ygfxy.Tools.ComTools;
 
 public class DeviceSerialEntity {
 
-    private int deviceaddr;                                  // 1 byte
+    public int SynCode;                                  // 1 byte -- 同步码
 
-    private int functioncode;                          // 1 byte
+    public int SessionFrom;                                // 1 byte -- 会话发起者
 
-    private int cmd;                                    // 2 byte
+    public int SessionId;                               //4 byte -- 会话编号
 
-    private int datalen;                                // 2 byte
+    public int cmd;                                    // 2 byte
 
-    private byte[] data;                         //change enable
+    public int datalen;                                // 2 byte
 
-    private int checksum;                               // deviceaddr - data, 1 byte
+    public byte[] data;                         //change enable
+
+    public int checksum;                               // deviceaddr - data, 1 byte
 
     public DeviceSerialEntity(){
 
     }
 
-    public DeviceSerialEntity(int deviceaddr, int functioncode, int cmd, byte ... data) {
-        this.deviceaddr = deviceaddr;
-        this.functioncode = functioncode;
+    public DeviceSerialEntity(int sessionFrom, int serrionId, int cmd, byte[] data) {
+        this.SynCode = DeviceSerialDefine.SYN_CODE;
+        this.SessionFrom = sessionFrom;
+        this.SessionId = serrionId;
         this.cmd = cmd;
-        this.datalen = data.length;
         this.data = data;
+        this.datalen = this.data.length;
     }
 
+    public DeviceSerialEntity(int sessionFrom, int serrionId, int cmd, String data) {
+        this.SynCode = DeviceSerialDefine.SYN_CODE;
+        this.SessionFrom = sessionFrom;
+        this.SessionId = serrionId;
+        this.cmd = cmd;
+        this.data = data.getBytes();
+        this.datalen = this.data.length;
+    }
+    /*
+        public DeviceSerialEntity(int sessionId, int cmd, int maxcnt, byte ... data) {
+            this.SynCode = DeviceSerialDefine.SYN_CODE;
+            this.SessionId = sessionId;
+            this.cmd = cmd;
+            this.data = data;
+            this.datalen = this.data.length;
+            this.SendTime = 0;
+            this.ReSendCnt = 0;
+            this.MaxSendCnt = maxcnt;
+        }
+
+        public DeviceSerialEntity(int sessionId, int cmd, int maxcnt, int data) {
+            this.SynCode = DeviceSerialDefine.SYN_CODE;
+            this.SessionId = sessionId;
+            this.cmd = cmd;
+            this.data = ComTools.intToByteArray(data);
+            this.datalen = this.data.length;
+            this.SendTime = 0;
+            this.ReSendCnt = 0;
+            this.MaxSendCnt = maxcnt;
+        }
+    */
     /*
     * 由于传入的数组为接受缓冲区，故需传入真是数据长度
      */
-    public static DeviceSerialEntity build(byte[] datas, int len){
+    public static DeviceSerialEntity ParseBytesToDeviceSerialEntity(byte[] datas, int datalen){
+
+        int sum = 0;
+
+        if(datas[0] != DeviceSerialDefine.SYN_CODE)
+        {
+            LoggerUnits.error("recv data from device SynCode error");
+            return null;
+        }
+
+        if(datalen < 11 || datalen > 128)
+        {
+            LoggerUnits.error("recv data from device length error");
+            return null;
+        }
 
         DeviceSerialEntity serialEntity = new DeviceSerialEntity();
 
-        serialEntity.deviceaddr = datas[0];
-        serialEntity.functioncode = datas[1];
+        serialEntity.SynCode = datas[0];
 
-        serialEntity.cmd = datas[2];
-        serialEntity.cmd <<= 8;
-        serialEntity.cmd += datas[3];
+        serialEntity.SessionFrom = datas[1];
 
-        serialEntity.datalen = datas[4];
-        serialEntity.datalen <<= 8;
-        serialEntity.datalen += datas[5];
+        serialEntity.SessionId = (datas[2]&0xff)<<24 | (datas[3]&0xff)<<16 | (datas[4]&0xff)<<8 | (datas[5]&0xff);
 
-        serialEntity.data = new byte[len-7];
-        System.arraycopy(datas, 6, serialEntity.data, 0, len-7);
+        serialEntity.cmd = (datas[6]&0xff)<<8 | (datas[7]&0xff);
 
-        serialEntity.checksum = datas[len-1];
+        serialEntity.datalen = (datas[8]&0xff)<<8 | (datas[9]&0xff);
 
-        return serialEntity;
+        //如果有数据
+        if(serialEntity.datalen > 0)
+        {
+            serialEntity.data = new byte[serialEntity.datalen];
+            System.arraycopy(datas, 10, serialEntity.data, 0, serialEntity.datalen);
+        }
+
+        serialEntity.checksum = datas[serialEntity.datalen+10];
+
+        //check sum
+        sum = CheckSum.checkSum(datas, serialEntity.datalen + 10);
+        if(serialEntity.checksum == sum)
+            return serialEntity;
+        else
+        {
+            LoggerUnits.error("recv data from device checksum error");
+            return null;
+        }
     }
 
-    public int getDeviceaddr() {
-        return deviceaddr;
-    }
+    public byte[] ParseDeviceSerialEntityToBytes(){
+        byte[] sendByte = new byte[datalen + 11];
 
-    public void setDeviceaddr(int deviceaddr) {
-        this.deviceaddr = deviceaddr;
-    }
+        sendByte[0] = (byte)SynCode;
+        sendByte[1] = (byte)(SessionFrom);
+        sendByte[2] = (byte)(SessionId>>24);
+        sendByte[3] = (byte)(SessionId>>16);
+        sendByte[4] = (byte)(SessionId>>8);
+        sendByte[5] = (byte)(SessionId);
+        sendByte[6] = (byte)(cmd>>8);
+        sendByte[7] = (byte)(cmd);
 
-    public int getFunctioncode() {
-        return functioncode;
-    }
+        sendByte[8] = (byte)(datalen>>8);
+        sendByte[9] = (byte)(datalen);
 
-    public void setFunctioncode(int functioncode) {
-        this.functioncode = functioncode;
-    }
-
-    public int getCmd() {
-        return cmd;
-    }
-
-    public void setCmd(int cmd) {
-        this.cmd = cmd;
-    }
-
-    public int getDatalen() {
-        return datalen;
-    }
-
-    public void setDatalen(int datalen) {
-        this.datalen = datalen;
-    }
-
-    public byte[] getData() {
-        return data;
-    }
-
-    public void setData(byte[] data) {
-        this.data = data;
-    }
-
-    public int getChecksum() {
-        return checksum;
-    }
-
-    public void setChecksum(int checksum) {
-        this.checksum = checksum;
-    }
-
-    public byte[] changeToByteForSend(){
-        byte[] sendByte = new byte[datalen + 7];
-
-        sendByte[0] = (byte)deviceaddr;
-        sendByte[1] = (byte)functioncode;
-        sendByte[2] = (byte)(cmd>>8);
-        sendByte[3] = (byte)(cmd);
-
-        sendByte[4] = (byte)(datalen>>8);
-        sendByte[5] = (byte)(datalen);
-
-        System.arraycopy(data, 0, sendByte, 6, datalen);
+        if(datalen > 0)
+            System.arraycopy(data, 0, sendByte, 10, datalen);
 
         sendByte[sendByte.length - 1] = CheckSum.checkSum(sendByte, sendByte.length - 1);
 
         return sendByte;
     }
 
+    @Override
+    public String toString() {
+        byte[] txbyte = this.ParseDeviceSerialEntityToBytes();
+        StringBuffer s = new StringBuffer();
+
+        for(int i=0; i<txbyte.length; i++)
+        {
+            s.append(String.format(" 0x%02x", txbyte[i]));
+        }
+        return s.toString();
+
+    }
 }

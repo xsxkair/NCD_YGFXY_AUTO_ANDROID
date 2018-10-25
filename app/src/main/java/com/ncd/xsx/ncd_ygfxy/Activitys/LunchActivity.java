@@ -5,33 +5,36 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.EthernetManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationClientOption;
-import com.amap.api.location.AMapLocationListener;
 import com.ncd.xsx.ncd_ygfxy.Databases.Services.CardService;
+import com.ncd.xsx.ncd_ygfxy.Databases.Services.PatientService;
 import com.ncd.xsx.ncd_ygfxy.Databases.Services.TestDataService;
 import com.ncd.xsx.ncd_ygfxy.Databases.Services.UserService;
-import com.ncd.xsx.ncd_ygfxy.Defines.EthernetConfig;
 import com.ncd.xsx.ncd_ygfxy.Defines.PublicStringDefine;
 import com.ncd.xsx.ncd_ygfxy.Logger.LogException;
 import com.ncd.xsx.ncd_ygfxy.Logger.LoggerUnits;
 import com.ncd.xsx.ncd_ygfxy.R;
 import com.ncd.xsx.ncd_ygfxy.SerialDriver.DeviceSerial.DeviceSerialDriver;
-import com.ncd.xsx.ncd_ygfxy.SerialDriver.GPRSSerial.GprsSerialDriver;
 import com.ncd.xsx.ncd_ygfxy.Services.CommonService.CommonService;
 import com.ncd.xsx.ncd_ygfxy.Services.DeviceControlBoardService.DeviceService;
-import com.ncd.xsx.ncd_ygfxy.Services.GprsService.GprsService;
+import com.ncd.xsx.ncd_ygfxy.Services.TestService.TestService;
+import com.ncd.xsx.ncd_ygfxy.Tools.ImgTool;
+import com.ncd.xsx.ncd_ygfxy.Tools.MyQRCodeDecodeTool;
 import com.ncd.xsx.ncd_ygfxy.Tools.MySdcardSharedPreferences;
+import com.ncd.xsx.ncd_ygfxy.Tools.MySharedPreferences;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import io.reactivex.Observable;
@@ -43,7 +46,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 
-public class LunchActivity extends MyActivity {
+public class LunchActivity extends Activity {
 
     ViewFlipper viewFlipper;
     TextView systeminitTextView;
@@ -51,10 +54,6 @@ public class LunchActivity extends MyActivity {
     private Disposable systemInitDisposable = null;
     private Observer<String> systemInitObserver = null;
     private Observable<String> systemInitObservable = null;
-    private EthernetConfig ethernetConfig = null;
-
-    //声明AMapLocationClient类对象
-    public AMapLocationClient mLocationClient = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +62,6 @@ public class LunchActivity extends MyActivity {
 
         viewFlipper = (ViewFlipper) findViewById(R.id.viewFlipper);
         systeminitTextView = (TextView) findViewById(R.id.systeminitTextView);
-
-        ethernetConfig = new EthernetConfig();
 
         viewFlipper.startFlipping();
         viewFlipper.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +132,7 @@ public class LunchActivity extends MyActivity {
                 UserService.getInstance().UserServiceInit(LunchActivity.this);
                 CardService.getInstance().CardServerInit(LunchActivity.this);
                 TestDataService.getInstance().TestDataServiceInit(LunchActivity.this);
+                PatientService.getInstance().serviceInit(LunchActivity.this);
                 emitter.onNext(" 数据库初始化完成");
                 Thread.sleep(100);
 
@@ -146,19 +144,40 @@ public class LunchActivity extends MyActivity {
                 MySdcardSharedPreferences.getInstance().putBoolean(MySdcardSharedPreferences.Keys.DEVICE_STATE_KEY, true)
                         .commit();
 
-                ethernetConfig.setDhcp(MySdcardSharedPreferences.getInstance().getValue(MySdcardSharedPreferences.Keys.ETHERNET_DHCP_KEY, true));
-                ethernetConfig.setIpv4(MySdcardSharedPreferences.getInstance().getValue(MySdcardSharedPreferences.Keys.ETHERNET_IPV4_KEY, PublicStringDefine.EMPTY_STRING));
-                ethernetConfig.setDns(MySdcardSharedPreferences.getInstance().getValue(MySdcardSharedPreferences.Keys.ETHERNET_DNS_KEY, PublicStringDefine.EMPTY_STRING));
-                ethernetConfig.setGateway(MySdcardSharedPreferences.getInstance().getValue(MySdcardSharedPreferences.Keys.ETHERNET_GATEWAY_KEY, PublicStringDefine.EMPTY_STRING));
-                ethernetConfig.setNetmask(MySdcardSharedPreferences.getInstance().getValue(MySdcardSharedPreferences.Keys.ETHERNET_MASK_KEY, PublicStringDefine.EMPTY_STRING));
-                emitter.onNext("read ethernet ok");
-
-                /*GprsSerialDriver.getInstance().GprsSerialInit();
-                emitter.onNext(" GPRS初始化完成");
-                Thread.sleep(100);
-
                 DeviceSerialDriver.getInstance().DeviceSerialInit();
                 emitter.onNext(" 控制端口初始化完成");
+                Thread.sleep(100);
+
+                Intent commonServiceIntent = new Intent(LunchActivity.this, CommonService.class);
+                startService(commonServiceIntent);
+
+                Intent deviceServiceIntent = new Intent(LunchActivity.this, DeviceService.class);
+                startService(deviceServiceIntent);
+
+                Intent testServiceIntent = new Intent(LunchActivity.this, TestService.class);
+                startService(testServiceIntent);
+
+             /*   Settings.System.putString(LunchActivity.this.getContentResolver(), Settings.System.NCD_DEVICE_ADDR, "张雄");
+                Log.d("xsx", Settings.System.getString(LunchActivity.this.getContentResolver(), "ncd_device_id"));
+                Log.d("xsx", Settings.System.getString(LunchActivity.this.getContentResolver(), "ncd_device_addr"));
+                Log.d("xsx", Settings.System.getString(LunchActivity.this.getContentResolver(), "ncd_device_user"));
+                Log.d("xsx", Settings.System.getString(LunchActivity.this.getContentResolver(), "ncd_device_id"));
+*/
+                MySharedPreferences.putValue(LunchActivity.this, "xsx", "aaa");
+
+                //MyQRCodeDecodeTool.decode("/mnt/sdcard/whnewcando/20181016003.jpg");
+                //ImgTool.myimage(LunchActivity.this, "/mnt/sdcard/whnewcando/20181016003.jpg");
+
+                //ImgTool.imgline(LunchActivity.this, "/mnt/sdcard/whnewcando/aaa.jpg");
+                //for(int i=1; i<10; i++)
+                 //   ImgTool.imgline(LunchActivity.this, String.format("/mnt/sdcard/whnewcando/pic/%d.jpg", i));
+                //ImgTool.imgline(LunchActivity.this, "/mnt/sdcard/whnewcando/pic/3.jpg");
+                //ImgTool.imgline(LunchActivity.this, "/mnt/sdcard/whnewcando/pic/4.jpg");
+                //ImgTool.imgline(LunchActivity.this, "/mnt/sdcard/whnewcando/pic/5.jpg");
+                //ImgTool.imgline(LunchActivity.this, "/mnt/sdcard/whnewcando/pic/6.jpg");
+                //ImgTool.imgline(LunchActivity.this, "/mnt/sdcard/whnewcando/20181016003.jpg");
+                /*GprsSerialDriver.getInstance().GprsSerialInit();
+                emitter.onNext(" GPRS初始化完成");
                 Thread.sleep(100);
 
                 Intent commonServiceIntent = new Intent(LunchActivity.this, CommonService.class);
@@ -190,47 +209,12 @@ public class LunchActivity extends MyActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(systemInitObserver);
 
-  /*      //初始化定位
-        mLocationClient = new AMapLocationClient(getApplicationContext());
-
-        //声明AMapLocationClientOption对象
-        AMapLocationClientOption mLocationOption = new AMapLocationClientOption();
-        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-        //设置是否返回地址信息（默认返回地址信息）
-        mLocationOption.setNeedAddress(true);
-        //关闭缓存机制
-        mLocationOption.setLocationCacheEnable(false);
-        //给定位客户端对象设置定位参数
-        mLocationClient.setLocationOption(mLocationOption);
-
-
-        //设置定位回调监听
-        mLocationClient.setLocationListener(new AMapLocationListener() {
-            @Override
-            public void onLocationChanged(AMapLocation aMapLocation) {
-                if (aMapLocation != null) {
-                    if (aMapLocation.getErrorCode() == 0) {
-                        //解析定位结果
-                        Log.i("xsx", "location ok: "+aMapLocation.getAddress()+"  ("+aMapLocation.getLatitude()+","+aMapLocation.getLongitude()+")");
-
-                    }
-                    else
-                        Log.i("xsx", "location error: "+aMapLocation.getErrorCode());
-                }
-            }
-        });
-
-        //启动定位
-        mLocationClient.startLocation();
-*/
         Log.i("xsx", "SHA1: "+sHA1(this));
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-        ethernetConfig = null;
 
         systemInitDisposable = null;
         systemInitObserver = null;

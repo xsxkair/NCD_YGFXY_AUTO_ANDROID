@@ -28,7 +28,6 @@ public class GprsSerialEntity {
         this.data = data;
     }
 
-
     public int getDeviceaddr() {
         return deviceaddr;
     }

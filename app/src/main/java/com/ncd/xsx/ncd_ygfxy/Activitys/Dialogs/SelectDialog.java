@@ -114,58 +114,50 @@ public class SelectDialog extends DialogFragment {
         else
             dialog_title_textview.setVisibility(View.GONE);
 
-        tempstring =  args.getString(DialogDefine.DIALOG_ARGS_BUTTON1_KEY_STRING);
-        if(tempstring != null)
-        {
-            dialog_submit_button_1.setText(tempstring);
-            dialog_submit_button_1.setVisibility(View.VISIBLE);
-        }
-        else
-            dialog_submit_button_1.setVisibility(View.GONE);
+        String[] button_text = args.getStringArray(DialogDefine.DIALOG_ARGS_BUTTON_KEY_STRING_ARRAY);
 
-        tempstring =  args.getString(DialogDefine.DIALOG_ARGS_BUTTON2_KEY_STRING);
-        if(tempstring != null)
+        if(button_text.length == 1)
         {
-            dialog_submit_button_2.setText(tempstring);
-            dialog_submit_button_2.setVisibility(View.VISIBLE);
-            dialog_splite_line2.setVisibility(View.VISIBLE);
-        }
-        else
-        {
+            dialog_submit_button_1.setText(button_text[0]);
+            dialog_submit_button_1.setVisibility(View.VISIBLE);
+
             dialog_submit_button_2.setVisibility(View.GONE);
             dialog_splite_line2.setVisibility(View.GONE);
-        }
 
-        tempstring =  args.getString(DialogDefine.DIALOG_ARGS_BUTTON3_KEY_STRING);
-        if(tempstring != null)
-        {
-            dialog_submit_button_3.setText(tempstring);
-            dialog_submit_button_3.setVisibility(View.VISIBLE);
-            dialog_splite_line3.setVisibility(View.VISIBLE);
-        }
-        else
-        {
             dialog_submit_button_3.setVisibility(View.GONE);
             dialog_splite_line3.setVisibility(View.GONE);
         }
+        else if(button_text.length == 2)
+        {
+            dialog_submit_button_1.setText(button_text[0]);
+            dialog_submit_button_1.setVisibility(View.VISIBLE);
+
+            dialog_submit_button_2.setText(button_text[1]);
+            dialog_submit_button_2.setVisibility(View.VISIBLE);
+            dialog_splite_line2.setVisibility(View.VISIBLE);
+
+            dialog_submit_button_3.setVisibility(View.GONE);
+            dialog_splite_line3.setVisibility(View.GONE);
+        }
+        else
+        {
+            dialog_submit_button_1.setText(button_text[0]);
+            dialog_submit_button_1.setVisibility(View.VISIBLE);
+
+            dialog_submit_button_2.setText(button_text[1]);
+            dialog_submit_button_2.setVisibility(View.VISIBLE);
+            dialog_splite_line2.setVisibility(View.VISIBLE);
+
+            dialog_submit_button_3.setText(button_text[2]);
+            dialog_submit_button_3.setVisibility(View.VISIBLE);
+            dialog_splite_line3.setVisibility(View.VISIBLE);
+        }
     }
 
-    public void showDialog(FragmentManager manager, String tag, String content, String button_1_text, String button_2_text, String button_3_text) {
+    public void showDialog(FragmentManager manager, String tag, String content, String[] button_text, int userValue) {
 
         args.putString(DialogDefine.DIALOG_ARGS_CONFIRM_CONTENT_KEY_STRING, content);
-        args.putString(DialogDefine.DIALOG_ARGS_BUTTON1_KEY_STRING, button_1_text);
-        args.putString(DialogDefine.DIALOG_ARGS_BUTTON2_KEY_STRING, button_2_text);
-        args.putString(DialogDefine.DIALOG_ARGS_BUTTON3_KEY_STRING, button_3_text);
-
-        show(manager, tag);
-    }
-
-    public void showDialog(FragmentManager manager, String tag, String content, String button_1_text, String button_2_text, String button_3_text, int userValue) {
-
-        args.putString(DialogDefine.DIALOG_ARGS_CONFIRM_CONTENT_KEY_STRING, content);
-        args.putString(DialogDefine.DIALOG_ARGS_BUTTON1_KEY_STRING, button_1_text);
-        args.putString(DialogDefine.DIALOG_ARGS_BUTTON2_KEY_STRING, button_2_text);
-        args.putString(DialogDefine.DIALOG_ARGS_BUTTON3_KEY_STRING, button_3_text);
+        args.putStringArray(DialogDefine.DIALOG_ARGS_BUTTON_KEY_STRING_ARRAY, button_text);
         args.putInt(DialogDefine.DIALOG_ARGS_USER_VALUE_KEY_STRING, userValue);
 
         show(manager, tag);

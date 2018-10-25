@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <com.ncd.xsx.ncd_ygfxy.Activitys.Dialogs.MyEditTextPreference
+        android:positiveButtonText="@string/preference_dialog_submit_text"
+        android:negativeButtonText="@string/preference_dialog_cancel_text"
+        android:dialogLayout="@layout/device_id_edit_preference"
+        android:key="@string/device_id_key"
+        android:title="@string/device_id_set_title"
+        android:summary="@string/def_device_id"
+        android:defaultValue="@string/def_device_id"/>
+
+    <EditTextPreference
+        android:defaultValue="@string/def_device_user"
+        android:key="@string/device_user_key"
+        android:title="@string/device_user_set_title"
+        android:summary="@string/def_device_user"/>
+
+    <EditTextPreference
+        android:defaultValue="@string/def_device_addr"
+        android:key="@string/device_addr_key"
+        android:title="@string/device_addr_set_title"
+        android:summary="@string/def_device_addr"/>
+
+    <SwitchPreference
+        android:key="@string/auto_print_key"
+        android:defaultValue="@bool/def_auto_print"
+        android:title="@string/auto_print_set_title"/>
+
+    <EditTextPreference
+        android:defaultValue="@string/def_server_ip"
+        android:key="@string/server_ip_key"
+        android:title="@string/server_ip_set_title"
+        android:summary="@string/def_server_ip"
+        android:inputType="number"
+        android:digits="0123456789."/>
+
+    <EditTextPreference
+        android:key="@string/server_port_key"
+        android:defaultValue="@string/def_server_port"
+        android:title="@string/server_port_set_title"
+        android:summary="@string/def_server_port"
+        android:inputType="number"
+        android:maxLength="5"/>
+
+    <Preference
+        android:key="@string/wlan_set_key"
+        android:title="@string/wlan_set_title"/>
+
+    <Preference
+        android:key="@string/ethernet_set_key"
+        android:title="@string/ethernet_set_title"/>
+
+    <Preference
+        android:key="@string/datetime_set_key"
+        android:title="@string/date_time_set_title"/>
+
+    <Preference
+        android:title="@string/soft_version_title"
+        android:summary="@string/app_version"/>
+
+</PreferenceScreen>

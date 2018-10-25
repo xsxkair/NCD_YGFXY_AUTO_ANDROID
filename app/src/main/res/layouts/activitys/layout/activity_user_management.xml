@@ -46,6 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/user_title_textview"
+        android:layout_marginBottom="@dimen/layoutBottomHigh"
         android:layout_gravity="center_horizontal"
         android:background="@color/white">
     </android.support.v7.widget.RecyclerView>

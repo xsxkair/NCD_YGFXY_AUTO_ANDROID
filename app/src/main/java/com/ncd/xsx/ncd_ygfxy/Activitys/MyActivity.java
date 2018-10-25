@@ -1,7 +1,10 @@
 package com.ncd.xsx.ncd_ygfxy.Activitys;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -9,19 +12,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.flexbox.FlexboxLayout;
 import com.ncd.xsx.ncd_ygfxy.Defines.PublicStringDefine;
 import com.ncd.xsx.ncd_ygfxy.R;
-import com.ncd.xsx.ncd_ygfxy.RxBus.MessageEvent;
 import com.ncd.xsx.ncd_ygfxy.RxBus.RxBus;
 import com.ncd.xsx.ncd_ygfxy.RxBus.ServiceStatuMsg;
-import com.ncd.xsx.ncd_ygfxy.RxBus.TimeMsg;
+import com.ncd.xsx.ncd_ygfxy.Tools.DateTimeTool;
 
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -34,13 +34,32 @@ public abstract class MyActivity extends Activity {
     private ImageView device_service_statu_imageview;
     private ImageView gprs_service_statu_imageview;
     private ImageButton back_button;
-    private Disposable timeDisposable;
     private Disposable serviceDisposable;
+
+    private BroadcastReceiver mReceiver;
+    private IntentFilter mFilter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mFilter = new IntentFilter();
+        mFilter.addAction(Intent.ACTION_TIME_TICK);
+        mFilter.addAction(Intent.ACTION_TIME_CHANGED);
+        mFilter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
+        mFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        mReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                String action = intent.getAction();
+
+                update_system_datetime();
+
+                if(ConnectivityManager.CONNECTIVITY_ACTION.equals(action))
+                    update_connect_status();
+            }
+        };
         Log.d(PublicStringDefine.OWNER_TAG, getClass().getSimpleName()+ " -- onCreate");
     }
 
@@ -63,6 +82,9 @@ public abstract class MyActivity extends Activity {
     protected void onResume() {
         super.onResume();
 
+        update_system_datetime();
+        update_connect_status();
+        registerReceiver(mReceiver, mFilter);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         Log.d(PublicStringDefine.OWNER_TAG, getClass().getSimpleName()+ " -- onResume");
@@ -71,6 +93,8 @@ public abstract class MyActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+
+        unregisterReceiver(mReceiver);
 
         Log.d(PublicStringDefine.OWNER_TAG, getClass().getSimpleName()+ " -- onPause");
     }
@@ -86,7 +110,6 @@ public abstract class MyActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
 
-        RxBus.getInstance().unregister(this.timeDisposable);
         RxBus.getInstance().unregister(this.serviceDisposable);
         Log.d(PublicStringDefine.OWNER_TAG, getClass().getSimpleName()+ " -- onDestroy");
     }
@@ -121,44 +144,6 @@ public abstract class MyActivity extends Activity {
             back_button = null;
         }
 
-        timeDisposable = RxBus.getInstance().toObservable(TimeMsg.class, new Consumer<TimeMsg>() {
-            @Override
-            public void accept(TimeMsg messageEvent) throws Exception {
-
-                system_time_textview.setText(messageEvent.getTimedate());
-
-                ConnectivityManager connectivityManager=(ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-                NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-
-                if(activeNetworkInfo != null && activeNetworkInfo.isConnected())
-                {
-                    switch (activeNetworkInfo.getType())
-                    {
-                        case ConnectivityManager.TYPE_WIFI:
-                            system_net_statu_imageview.setVisibility(View.VISIBLE);
-                            if(back_button == null)
-                                system_net_statu_imageview.setImageResource(R.drawable.net_wifi);
-                            else
-                                system_net_statu_imageview.setImageResource(R.drawable.net_wifi_white);
-                            break;
-                        case ConnectivityManager.TYPE_ETHERNET:
-                            system_net_statu_imageview.setVisibility(View.VISIBLE);
-                            if(back_button == null)
-                                system_net_statu_imageview.setImageResource(R.drawable.net_eth);
-                            else
-                                system_net_statu_imageview.setImageResource(R.drawable.net_eth_white);
-                            break;
-                        default:
-                            system_net_statu_imageview.setVisibility(View.GONE);
-                            break;
-                    }
-
-                }
-                else
-                    system_net_statu_imageview.setVisibility(View.GONE);
-            }
-        });
-
         serviceDisposable = RxBus.getInstance().toObservable(ServiceStatuMsg.class, new Consumer<ServiceStatuMsg>() {
             @Override
             public void accept(ServiceStatuMsg msg) throws Exception {
@@ -181,4 +166,43 @@ public abstract class MyActivity extends Activity {
             }
         });
     }
+
+    private void update_system_datetime()
+    {
+        system_time_textview.setText(DateTimeTool.getSystemDateTime_min());
+    }
+
+    private void update_connect_status()
+    {
+        ConnectivityManager connectivityManager=(ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if(activeNetworkInfo != null && activeNetworkInfo.isConnected())
+        {
+            switch (activeNetworkInfo.getType())
+            {
+                case ConnectivityManager.TYPE_WIFI:
+                    system_net_statu_imageview.setVisibility(View.VISIBLE);
+                    if(back_button == null)
+                        system_net_statu_imageview.setImageResource(R.drawable.net_wifi);
+                    else
+                        system_net_statu_imageview.setImageResource(R.drawable.net_wifi_white);
+                    break;
+                case ConnectivityManager.TYPE_ETHERNET:
+                    system_net_statu_imageview.setVisibility(View.VISIBLE);
+                    if(back_button == null)
+                        system_net_statu_imageview.setImageResource(R.drawable.net_eth);
+                    else
+                        system_net_statu_imageview.setImageResource(R.drawable.net_eth_white);
+                    break;
+                default:
+                    system_net_statu_imageview.setVisibility(View.GONE);
+                    break;
+            }
+
+        }
+        else
+            system_net_statu_imageview.setVisibility(View.GONE);
+    }
+
 }

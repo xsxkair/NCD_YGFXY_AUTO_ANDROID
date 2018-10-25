@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/sample_input_DialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_input_activity_title"
+        android:textSize="32sp"
+        android:textColor="@color/white"
+        android:background="@color/ncd_blue"
+        android:gravity="center"
+        android:paddingTop="@dimen/dp_20"
+        android:paddingBottom="@dimen/dp_20"/>
+
+    <TextView
+        android:id="@+id/sample_id_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sample_input_DialogTitle"
+        android:text="@string/sample_id_input_string"
+        android:textColor="@color/ncd_blue"
+        android:textSize="@dimen/sp_24"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginStart="@dimen/dp_10"/>
+    <EditText
+        android:id="@+id/sample_id_editview"
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/sample_id_textview"
+        android:layout_toEndOf="@id/sample_id_textview"
+        android:textColor="@color/ncd_blue"
+        android:textSize="@dimen/sp_24"
+        android:singleLine="true"
+        android:enabled="false"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/patient_sick_id_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sample_id_textview"
+        android:layout_alignStart="@id/sample_id_textview"
+        android:textColor="@color/ncd_blue"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="@string/sample_sickid_input_string"
+        android:textSize="@dimen/sp_24"/>
+    <AutoCompleteTextView
+        android:id="@+id/patient_sick_id_autocompletetextview"
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/patient_sick_id_textview"
+        android:layout_alignStart="@id/sample_id_editview"/>
+
+    <TextView
+        android:id="@+id/patient_bed_num_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_below="@id/patient_sick_id_textview"
+        android:layout_alignStart="@id/patient_sick_id_textview"
+        android:textColor="@color/ncd_blue"
+        android:text="@string/sample_bednum_input_string"
+        android:textSize="@dimen/sp_24"/>
+    <EditText
+        android:id="@+id/patient_bed_num_edittext"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/patient_bed_num_textview"
+        android:layout_alignStart="@id/sample_id_editview"
+        android:textColor="@color/ncd_blue"
+        android:textSize="@dimen/sp_24"
+        android:singleLine="true"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/patient_name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_below="@id/patient_bed_num_textview"
+        android:layout_alignStart="@id/patient_bed_num_textview"
+        android:text="@string/sample_name_input_string"
+        android:textColor="@color/ncd_blue"
+        android:textSize="@dimen/sp_24"/>
+    <EditText
+        android:id="@+id/patient_name_edittext"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/patient_name_textview"
+        android:layout_alignStart="@id/sample_id_editview"
+        android:textColor="@color/ncd_blue"
+        android:textSize="@dimen/sp_24"
+        android:singleLine="true"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/patient_sex_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_below="@id/patient_name_textview"
+        android:layout_alignStart="@id/patient_name_textview"
+        android:text="@string/sample_sex_input_string"
+        android:textColor="@color/ncd_blue"
+        android:textSize="@dimen/sp_24"/>
+    <RadioGroup
+        android:id="@+id/patient_sex_radiogroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/patient_sex_textview"
+        android:layout_alignStart="@id/sample_id_editview"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/patient_man_radiobutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="男"/>
+        <RadioButton
+            android:id="@+id/patient_woman_radiobutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="女"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/patient_age_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_below="@id/patient_sex_textview"
+        android:layout_alignStart="@id/patient_sex_textview"
+        android:textColor="@color/ncd_blue"
+        android:text="@string/sample_age_input_string"
+        android:textSize="@dimen/sp_24"/>
+    <EditText
+        android:id="@+id/patient_age_edittext"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/patient_age_textview"
+        android:layout_alignStart="@id/sample_id_editview"
+        android:textColor="@color/ncd_blue"
+        android:textSize="@dimen/sp_24"
+        android:singleLine="true"
+        android:inputType="number"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/sample_test_item_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_below="@id/patient_age_textview"
+        android:layout_alignStart="@id/patient_age_textview"
+        android:layout_marginBottom="@dimen/dp_50"
+        android:textColor="@color/ncd_blue"
+        android:text="@string/sample_items_input_string"
+        android:textSize="@dimen/sp_24"/>
+    <com.google.android.flexbox.FlexboxLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/item_select_flexboxLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_50"
+        app:flexDirection="row"
+        app:flexWrap="wrap"
+        app:justifyContent="flex_start"
+        android:layout_alignTop="@id/sample_test_item_textview"
+        android:layout_toEndOf="@id/sample_test_item_textview">
+
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_select_flexboxLayout"
+        android:layout_marginBottom="@dimen/dp_50"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/end_button"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_100"
+            android:background="@drawable/button_background"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_30"
+            android:text="@string/button_end_text"/>
+
+        <Button
+            android:id="@+id/add_button"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/cancelButton"
+            android:layout_alignBaseline="@id/cancelButton"
+            android:background="@drawable/button_background"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_30"
+            android:text="@string/button_add_text"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

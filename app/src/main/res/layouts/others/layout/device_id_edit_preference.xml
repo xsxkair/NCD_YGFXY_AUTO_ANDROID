@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingStart="@dimen/dp_50"
+    android:paddingEnd="@dimen/dp_50">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_50"
+        android:gravity="center"
+        android:text="@string/root_passwd_text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textView1"
+        android:layout_alignBaseline="@id/textView1"
+        android:ems="10"
+        android:layout_marginLeft="22dp"
+        android:inputType="numberPassword">
+    </EditText>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_50"
+        android:gravity="center"
+        android:layout_below="@id/textView1"
+        android:layout_alignStart="@id/textView1"
+        android:text="@string/device_id_set_title"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_alignStart="@id/editText1"
+        android:layout_alignBaseline="@id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" >
+
+    </EditText>
+
+</RelativeLayout>

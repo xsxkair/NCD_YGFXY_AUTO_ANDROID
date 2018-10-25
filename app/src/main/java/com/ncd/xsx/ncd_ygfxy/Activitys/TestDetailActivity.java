@@ -117,10 +117,10 @@ public class TestDetailActivity extends MyActivity {
     }
 
     private void showReportInfo(){
-        TestItemContentTextView.setText(testData.getItem());
+        /*TestItemContentTextView.setText(testData.getCard().getItem());
         TestSampleContentTextView.setText(testData.getSampleid());
         TestCardContentTextView.setText(String.format("%s-%s", testData.getCard().getPihao(), testData.getCardnum()));
-        TestTesterContentTextView.setText(testData.getTester());
+        TestTesterContentTextView.setText(testData.getTester().getName());
         TestTimeContentTextView.setText(sf.format(testData.getTesttime()));
 
         numberFormat.setMaximumFractionDigits(testData.getCard().getPointnum());
@@ -132,7 +132,7 @@ public class TestDetailActivity extends MyActivity {
             TestResultContentTextView.setText(String.format("%s %s", numberFormat.format(testData.getTestv()), testData.getCard().getMeasure()));
 
         TestNormalContentTextView.setText(testData.getCard().getNormalresult());
-
+*/
         if(testData.getCheck() == null)
         {
             reportNoPassRadioButton.setSelected(false);

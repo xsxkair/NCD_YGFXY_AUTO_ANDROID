@@ -1,36 +1,32 @@
 package com.ncd.xsx.ncd_ygfxy.Services.DeviceControlBoardService;
 
 
+import android.content.Context;
+
 import com.ncd.xsx.ncd_ygfxy.RxBus.RxBus;
 import com.ncd.xsx.ncd_ygfxy.RxBus.ServiceStatuMsg;
 
 public class DeviceThread extends Thread {
 
-    private boolean threadControlFlag = true;
+    private Context mContext;
 
-    private int sendCnt = 0;
-
-    public DeviceThread(){
-        threadControlFlag = true;
-    }
-
-    public void stopSerialThread(){
-        threadControlFlag = false;
+    public DeviceThread(Context context){
+        this.mContext = context;
     }
 
     @Override
     public void run()
     {
 
-        while(threadControlFlag)
+        while(true)
         {
+
+            DeviceFunction.DeviceSerislSendFunction();
+
+            DeviceFunction.DeviceSerislRecvFunction(this.mContext);
+
             RxBus.getInstance().post(new ServiceStatuMsg(ServiceStatuMsg.DEVICE_SERVICE_LIVE));
 
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
 
     }

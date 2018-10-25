@@ -2,7 +2,9 @@ package com.ncd.xsx.ncd_ygfxy.SerialDriver.DeviceSerial;
 
 import android.util.Log;
 
+import com.android.internal.widget.PreferenceImageView;
 import com.friendlyarm.AndroidSDK.HardwareControler;
+import com.ncd.xsx.ncd_ygfxy.SerialDriver.GPRSSerial.GprsSerialDefine;
 import com.ncd.xsx.ncd_ygfxy.SerialDriver.GPRSSerial.GprsSerialDriver;
 import com.ncd.xsx.ncd_ygfxy.Tools.CheckSum;
 
@@ -10,7 +12,12 @@ public class DeviceSerialDriver {
 
     private int serialDeviceFile = -1;
     private boolean serialIsBusy = false;
+
+    private int totalReadDataLen = 0;
     private byte[] recvBuf = new byte[DeviceSerialDefine.SERIAL_READBUF_LEN];
+
+    private int tempReadDataLen = 0;
+    private byte[] tempRecvBuf = new byte[DeviceSerialDefine.SERIAL_TEMP_READBUF_LEN];
 
     //在访问HttpMethods时创建单例
     private static class SingletonHolder{
@@ -52,79 +59,109 @@ public class DeviceSerialDriver {
             return  false;
     }
 
+    public boolean writeDataToDevice(DeviceSerialEntity serialRequest)
+    {
+        byte[] serialRequestBytes = serialRequest.ParseDeviceSerialEntityToBytes();
+
+        StringBuffer s = new StringBuffer();
+
+        for(int i=0; i<serialRequestBytes.length; i++)
+        {
+            s.append(String.format(" 0x%02x", serialRequestBytes[i]));
+        }
+        Log.i("send data to device", s.toString());
+
+        if (HardwareControler.write(serialDeviceFile, serialRequestBytes) == serialRequestBytes.length)
+            return true;
+        else
+            return false;
+    }
+
+    public DeviceSerialEntity readDataFromDevice()
+    {
+        totalReadDataLen = 0;
+
+        while(HardwareControler.select(serialDeviceFile, 0, DeviceSerialDefine.SERIAL_READ_WAIT_TIME) > 0)
+        {
+            tempReadDataLen = HardwareControler.read(serialDeviceFile, tempRecvBuf, GprsSerialDefine.SERIAL_READBUF_LEN);
+
+            if(tempReadDataLen > 100)
+                tempReadDataLen = 100;
+            System.arraycopy(tempRecvBuf, 0, recvBuf, totalReadDataLen, tempReadDataLen);
+
+            totalReadDataLen += tempReadDataLen;
+            if(totalReadDataLen > 512)
+                totalReadDataLen = 0;
+        }
+
+        if(totalReadDataLen < 11)
+            return null;
+
+        StringBuffer s = new StringBuffer();
+
+        for(int i=0; i<totalReadDataLen; i++)
+        {
+            s.append(String.format(" 0x%02x", recvBuf[i]));
+        }
+        Log.i("recv data from device", s.toString());
+
+        return DeviceSerialEntity.ParseBytesToDeviceSerialEntity(recvBuf, totalReadDataLen);
+    }
+
     /*
      *   serialRequest -- 请求数据
      *   return : 通信失败 返回null
      */
-    private DeviceSerialEntity serialCommunicationFunction(DeviceSerialEntity serialRequest, boolean wait) throws InterruptedException {
+  /*  public DeviceSerialEntity serialCommunicationFunction(DeviceSerialEntity serialRequest, long waitTime) throws Exception {
         int errorCnt = 5;
-        int readDataSize = 0;
         int checkSum = 0;
+        byte[] serialRequestBytes;
 
         if(serialIsBusy){
-            if(wait){
-                while(serialIsBusy)
-                    Thread.sleep(100);
-            }
-            else
-                return null;
+            Thread.sleep(waitTime);
         }
+
+        if(serialIsBusy)
+            throw new Exception("device busy");
         else
             serialIsBusy = true;
 
+        serialRequestBytes = serialRequest.changeToByteForSend();
+
         while (errorCnt > 0){
 
-            if (HardwareControler.write(serialDeviceFile, serialRequest.changeToByteForSend()) > 0){
+            if (HardwareControler.write(serialDeviceFile, serialRequestBytes) > 0){
 
-                if(HardwareControler.select(serialDeviceFile, 0, DeviceSerialDefine.SERIAL_READ_WAIT_TIME) > 0){
+                while(HardwareControler.select(serialDeviceFile, 0, DeviceSerialDefine.SERIAL_READ_WAIT_TIME) > 0)
+                {
+                    tempReadDataLen = HardwareControler.read(serialDeviceFile, tempRecvBuf, GprsSerialDefine.SERIAL_READBUF_LEN);
 
-                    readDataSize = HardwareControler.read(serialDeviceFile, recvBuf, DeviceSerialDefine.SERIAL_READBUF_LEN);
+                    System.arraycopy(tempRecvBuf, 0, recvBuf, totalReadDataLen, tempReadDataLen);
 
-                    //接收数据必须大于7字节才是正确的
-                    if(readDataSize > 7)
+                    totalReadDataLen += tempReadDataLen;
+                }
+
+                //接收数据必须大于7字节才是正确的
+                if(totalReadDataLen > 7)
+                {
+                    checkSum = CheckSum.checkSum(recvBuf, totalReadDataLen-1);
+
+                    if(checkSum == recvBuf[totalReadDataLen - 1])
                     {
-                        checkSum = CheckSum.checkSum(recvBuf, readDataSize-1);
-
-                        if(checkSum == recvBuf[readDataSize - 1])
-                        {
-                            serialIsBusy = false;
-                            return DeviceSerialEntity.build(recvBuf, readDataSize);
-                        }
+                        serialIsBusy = false;
+                        return DeviceSerialEntity.build(recvBuf, totalReadDataLen);
                     }
                 }
             }
+
+            Thread.sleep(waitTime);
 
             errorCnt--;
         }
 
         serialIsBusy = false;
 
-        return null;
-    }
-
-    public boolean checkControlBordIsReady() {
-
-        try{
-            DeviceSerialEntity serialRequest = new DeviceSerialEntity(DeviceSerialDefine.CONTROL_BORD_ADDR, DeviceSerialDefine.FUNCTION_READ,
-                    DeviceSerialDefine.CHECK_CONTROL_BORD_IS_READY, (byte) 0x01);
-
-            DeviceSerialEntity serialRespone = serialCommunicationFunction(serialRequest, false);
-
-            DeviceSerialResultFunction<DeviceSerialEntity, Boolean> deviceSerialResultFunction = new DeviceSerialResultFunction<>();
-
-            return deviceSerialResultFunction.apply(serialRespone);
-        }
-        catch (Exception e){
-
-            return false;
-
-        }
-
-    }
-
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //services
-    ////////////////////////////////////////////////////////////////////////////////////////////////
+        throw new Exception("communicate fail");
+    }*/
 
 }

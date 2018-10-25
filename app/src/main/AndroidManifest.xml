@@ -11,6 +11,7 @@
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
     <uses-permission android:name="android.permission.SET_TIME" />
     <!-- 这个权限用于进行网络定位-->
@@ -45,19 +46,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <meta-data
-            android:name="com.amap.api.v2.apikey"
-            android:value="6a3cf4290523e288b69f67d14b4f5a78">
-        </meta-data>
-
-        <service android:name="com.amap.api.location.APSService"></service>
-
-
         <service android:name=".Services.CommonService.CommonService" />
 
         <service android:name=".Services.DeviceControlBoardService.DeviceService" />
 
         <service android:name=".Services.GprsService.GprsService" />
+        <service android:name=".Services.TestService.TestService" />
 
 
 
@@ -79,10 +73,9 @@
         <activity android:name=".Activitys.TestDetailActivity" />
         <activity android:name=".Activitys.AboutUsActivity" />
         <activity android:name=".Activitys.SelectUserActivity" />
-        <activity android:name=".Activitys.DeviceInfoActivity" />
-        <activity android:name=".Activitys.EthernetSettingActivity" />
-        <activity android:name=".Activitys.WifiSetActivity" />
-        <activity android:name=".Activitys.ServerSetActivity"/>
+        <activity android:name=".Activitys.SystemCfgActivity"/>
         <activity android:name=".Activitys.AdbActivity"/>
+        <activity android:name=".Activitys.MotorTestActivity"/>
+        <activity android:name=".Activitys.SampleInputActivity"/>
     </application>
 </manifest>

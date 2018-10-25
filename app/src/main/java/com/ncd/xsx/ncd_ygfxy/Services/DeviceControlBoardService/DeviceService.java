@@ -32,7 +32,7 @@ public class DeviceService extends Service{
         localBuilder.setContentText("running...");
         startForeground(2, localBuilder.build());
 
-        deviceThread = new DeviceThread();
+        deviceThread = new DeviceThread(this);
         deviceThread.start();
 
         RxBus.getInstance().post(new ServiceStatuMsg(ServiceStatuMsg.DEVICE_SERVICE_LIVE));
@@ -46,7 +46,7 @@ public class DeviceService extends Service{
 
     @Override
     public void onDestroy() {
-        deviceThread.stopSerialThread();
+
         super.onDestroy();
 
         RxBus.getInstance().post(new ServiceStatuMsg(ServiceStatuMsg.DEVICE_SERVICE_DEAD));

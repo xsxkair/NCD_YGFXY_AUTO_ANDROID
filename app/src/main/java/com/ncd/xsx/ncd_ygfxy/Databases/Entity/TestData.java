@@ -13,22 +13,29 @@ public class TestData extends BaseEntity{
 	@DatabaseField(generatedId = true, allowGeneratedIdInsert = true)
 	private Long id;
 
-	@DatabaseField(columnName = "card", canBeNull = false, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
+	@DatabaseField(columnName = "card", foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
 	private Card card;
-
-	@DatabaseField(columnName = "item", canBeNull = false)
-	private String item;
-
-	@DatabaseField(width = 10)
-	private String cardnum;
 	
-	@DatabaseField(columnName = "tester", width = 20)
-	private String tester;
+	@DatabaseField(columnName = "tester", foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
+	private User tester;
+
+	@DatabaseField(columnName = "patient", foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true)
+	private Patient patient;
 
 	@DatabaseField(columnName = "sampleid", width = 30)
 	private String sampleid;
 
-	@DatabaseField(columnName = "testtime")
+	//测试唯一代码（由创建时的ms数填充），具有相同代码的测试为一组测试
+    @DatabaseField(columnName = "uniquenum")
+	private Long uniquenum;
+
+	@DatabaseField(columnName = "bednum", width = 10)
+	private String bednum;
+
+    @DatabaseField(width = 10)
+    private String cardnum;
+
+    @DatabaseField(columnName = "testtime")
 	private java.sql.Timestamp testtime;
 
 	@DatabaseField
@@ -76,192 +83,204 @@ public class TestData extends BaseEntity{
 	@DatabaseField(defaultValue = "false", columnDefinition="bit(1)", canBeNull = false)
 	private Boolean ncdup;
 
-	public Long getId() {
-		return id;
-	}
+	public TestData(){
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    }
 
-	public Card getCard() {
-		return card;
-	}
+	public TestData(String sampleid)
+    {
+        this.setSampleid(sampleid);
+    }
 
-	public void setCard(Card card) {
-		this.card = card;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getItem() {
-		return item;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setItem(String item) {
-		this.item = item;
-	}
+    public Card getCard() {
+        return card;
+    }
 
-	public String getCardnum() {
-		return cardnum;
-	}
+    public void setCard(Card card) {
+        this.card = card;
+    }
 
-	public void setCardnum(String cardnum) {
-		this.cardnum = cardnum;
-	}
+    public User getTester() {
+        return tester;
+    }
 
-	public String getTester() {
-		return tester;
-	}
+    public void setTester(User tester) {
+        this.tester = tester;
+    }
 
-	public void setTester(String tester) {
-		this.tester = tester;
-	}
+    public Patient getPatient() {
+        return patient;
+    }
 
-	public String getSampleid() {
-		return sampleid;
-	}
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 
-	public void setSampleid(String sampleid) {
-		this.sampleid = sampleid;
-	}
+    public String getSampleid() {
+        return sampleid;
+    }
 
-	public Timestamp getTesttime() {
-		return testtime;
-	}
+    public void setSampleid(String sampleid) {
+        this.sampleid = sampleid;
+    }
 
-	public void setTesttime(Timestamp testtime) {
-		this.testtime = testtime;
-	}
+    public Long getUniquenum() {
+        return uniquenum;
+    }
 
-	public Integer getOvertime() {
-		return overtime;
-	}
+    public void setUniquenum(Long uniquenum) {
+        this.uniquenum = uniquenum;
+    }
 
-	public void setOvertime(Integer overtime) {
-		this.overtime = overtime;
-	}
+    public String getBednum() {
+        return bednum;
+    }
 
-	public Integer getCline() {
-		return cline;
-	}
+    public void setBednum(String bednum) {
+        this.bednum = bednum;
+    }
 
-	public void setCline(Integer cline) {
-		this.cline = cline;
-	}
+    public Timestamp getTesttime() {
+        return testtime;
+    }
 
-	public Integer getCparm() {
-		return cparm;
-	}
+    public void setTesttime(Timestamp testtime) {
+        this.testtime = testtime;
+    }
 
-	public void setCparm(Integer cparm) {
-		this.cparm = cparm;
-	}
+    public String getCardnum() {
+        return cardnum;
+    }
 
-	public Integer getBline() {
-		return bline;
-	}
+    public void setCardnum(String cardnum) {
+        this.cardnum = cardnum;
+    }
 
-	public void setBline(Integer bline) {
-		this.bline = bline;
-	}
+    public Integer getOvertime() {
+        return overtime;
+    }
 
-	public Integer getTline() {
-		return tline;
-	}
+    public void setOvertime(Integer overtime) {
+        this.overtime = overtime;
+    }
 
-	public void setTline(Integer tline) {
-		this.tline = tline;
-	}
+    public Integer getCline() {
+        return cline;
+    }
 
-	public Float getT_cv() {
-		return t_cv;
-	}
+    public void setCline(Integer cline) {
+        this.cline = cline;
+    }
 
-	public void setT_cv(Float t_cv) {
-		this.t_cv = t_cv;
-	}
+    public Integer getCparm() {
+        return cparm;
+    }
 
-	public Float getC_cv() {
-		return c_cv;
-	}
+    public void setCparm(Integer cparm) {
+        this.cparm = cparm;
+    }
 
-	public void setC_cv(Float c_cv) {
-		this.c_cv = c_cv;
-	}
+    public Integer getBline() {
+        return bline;
+    }
 
-	public String getSeries() {
-		return series;
-	}
+    public void setBline(Integer bline) {
+        this.bline = bline;
+    }
 
-	public void setSeries(String series) {
-		this.series = series;
-	}
+    public Integer getTline() {
+        return tline;
+    }
 
-	public Float getT_c_v() {
-		return t_c_v;
-	}
+    public void setTline(Integer tline) {
+        this.tline = tline;
+    }
 
-	public void setT_c_v(Float t_c_v) {
-		this.t_c_v = t_c_v;
-	}
+    public Float getT_cv() {
+        return t_cv;
+    }
 
-	public Float getT_tc_v() {
-		return t_tc_v;
-	}
+    public void setT_cv(Float t_cv) {
+        this.t_cv = t_cv;
+    }
 
-	public void setT_tc_v(Float t_tc_v) {
-		this.t_tc_v = t_tc_v;
-	}
+    public Float getC_cv() {
+        return c_cv;
+    }
 
-	public Float getTestv() {
-		return testv;
-	}
+    public void setC_cv(Float c_cv) {
+        this.c_cv = c_cv;
+    }
 
-	public void setTestv(Float testv) {
-		this.testv = testv;
-	}
+    public String getSeries() {
+        return series;
+    }
 
-	public Boolean getResultok() {
-		return resultok;
-	}
+    public void setSeries(String series) {
+        this.series = series;
+    }
 
-	public void setResultok(Boolean resultok) {
-		this.resultok = resultok;
-	}
+    public Float getT_c_v() {
+        return t_c_v;
+    }
 
-	public Boolean getCheck() {
-		return check;
-	}
+    public void setT_c_v(Float t_c_v) {
+        this.t_c_v = t_c_v;
+    }
 
-	public void setCheck(Boolean check) {
-		this.check = check;
-	}
+    public Float getT_tc_v() {
+        return t_tc_v;
+    }
 
-	public Boolean getUserup() {
-		return userup;
-	}
+    public void setT_tc_v(Float t_tc_v) {
+        this.t_tc_v = t_tc_v;
+    }
 
-	public void setUserup(Boolean userup) {
-		this.userup = userup;
-	}
+    public Float getTestv() {
+        return testv;
+    }
 
-	public Boolean getNcdup() {
-		return ncdup;
-	}
+    public void setTestv(Float testv) {
+        this.testv = testv;
+    }
 
-	public void setNcdup(Boolean ncdup) {
-		this.ncdup = ncdup;
-	}
+    public Boolean getResultok() {
+        return resultok;
+    }
 
-	@Override
-	public String toString() {
-		return "TestData{" +
-				"id=" + id +
-				", card=" + card +
-				", tester='" + tester + '\'' +
-				", sampleid='" + sampleid + '\'' +
-				", testtime=" + testtime +
-				", testv=" + testv +
-				", resultok=" + resultok +
-				'}';
-	}
+    public void setResultok(Boolean resultok) {
+        this.resultok = resultok;
+    }
+
+    public Boolean getCheck() {
+        return check;
+    }
+
+    public void setCheck(Boolean check) {
+        this.check = check;
+    }
+
+    public Boolean getUserup() {
+        return userup;
+    }
+
+    public void setUserup(Boolean userup) {
+        this.userup = userup;
+    }
+
+    public Boolean getNcdup() {
+        return ncdup;
+    }
+
+    public void setNcdup(Boolean ncdup) {
+        this.ncdup = ncdup;
+    }
 }

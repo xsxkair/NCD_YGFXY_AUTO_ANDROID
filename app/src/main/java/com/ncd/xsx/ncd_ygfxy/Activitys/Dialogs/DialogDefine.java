@@ -7,6 +7,7 @@ public class DialogDefine {
      */
     public static final String DIALOG_ARGS_TITLE_KEY_STRING = "title";
     public static final String DIALOG_ARGS_USER_VALUE_KEY_STRING = "uservalue";
+    public static final String DIALOG_ARGS_BUTTON_KEY_STRING_ARRAY = "buton_array";
     public static final String DIALOG_ARGS_BUTTON1_KEY_STRING = "buton_1";
     public static final String DIALOG_ARGS_BUTTON2_KEY_STRING = "buton_2";
     public static final String DIALOG_ARGS_BUTTON3_KEY_STRING = "buton_3";

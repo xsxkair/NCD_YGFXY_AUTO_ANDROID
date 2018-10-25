@@ -47,7 +47,7 @@ public class CommonService extends Service{
             }
         };
 
-        commonThread = new CommonThread();
+        commonThread = new CommonThread(this);
         commonThread.start();
     }
 

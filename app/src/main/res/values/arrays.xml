@@ -22,6 +22,21 @@
         <item>Server</item>
     </string-array>
 
+    <string-array name="hide_test_menu_items">
+        <item>电机测试</item>
+        <item>预留1</item>
+        <item>预留2</item>
+    </string-array>
+
+    <string-array name="motor_name_items">
+        <item>Motor_1</item>
+        <item>Motor_2</item>
+        <item>Motor_3</item>
+        <item>Motor_4</item>
+        <item>Motor_5</item>
+        <item>Motor_6</item>
+    </string-array>
+
     <string-array name="data_item_long_press_action_menu">
         <item>删除</item>
         <item>上传</item>

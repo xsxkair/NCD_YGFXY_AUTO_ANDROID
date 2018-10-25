@@ -41,19 +41,19 @@ public class TestDataViewHolder extends RecyclerView.ViewHolder {
 
     public void fillViewHolderContent(TestData testData){
         testDataIndexTextView.setText(testData.getIndex().toString());
-        testDataItemTextView.setText(testData.getCard().getItem());
+        testDataItemTextView.setText(testData.getCard().getItemConstData().getName_en());
         testDataSampleTextView.setText(testData.getSampleid());
 
-        numberFormat.setMaximumFractionDigits(testData.getCard().getPointnum());
+        numberFormat.setMaximumFractionDigits(testData.getCard().getItemConstData().getPoint());
         if(!testData.getResultok())
             testDataResultTextView.setText(R.string.TestResultErrorText);
-        else if(testData.getTestv() < testData.getCard().getLowestresult())
-            testDataResultTextView.setText(String.format("<%s %s", numberFormat.format(testData.getCard().getLowestresult()), testData.getCard().getMeasure()));
+        else if(testData.getTestv() < testData.getCard().getItemConstData().getLowvalue())
+            testDataResultTextView.setText(String.format("<%s %s", numberFormat.format(testData.getCard().getItemConstData().getLowvalue()), testData.getCard().getItemConstData().getDanwei()));
         else
-            testDataResultTextView.setText(String.format("%s %s", numberFormat.format(testData.getTestv()), testData.getCard().getMeasure()));
+            testDataResultTextView.setText(String.format("%s %s", numberFormat.format(testData.getTestv()), testData.getCard().getItemConstData().getDanwei()));
 
         testDataDateTextView.setText(sdf.format(testData.getTesttime()));
-        testDataTesterTextView.setText(testData.getTester());
+        testDataTesterTextView.setText(testData.getTester().getName());
 
         ischecked = testData.getCheck();
         if(ischecked == null)

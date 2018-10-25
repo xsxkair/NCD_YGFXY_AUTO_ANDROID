@@ -24,6 +24,13 @@ public class User extends BaseEntity{
     @DatabaseField(canBeNull = true)
     private String dep;
 
+    public User() {
+    }
+
+    public User(String name) {
+        this.name = name;
+    }
+
     public Integer getId() {
         return id;
     }

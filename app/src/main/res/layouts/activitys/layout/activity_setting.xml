@@ -15,23 +15,10 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_223"
-        android:layout_marginEnd="@dimen/dp_223"
         app:flexWrap="wrap"
         app:justifyContent="space_between"
         app:alignItems="baseline"
         android:layout_centerInParent="true">
-
-        <Button
-            android:id="@+id/device_info_button"
-            android:layout_width="@dimen/dp_278"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp_60"
-            android:text="@string/setting_menu_device_info_text"
-            android:background="@null"
-            android:textSize="@dimen/sp_20"
-            android:textColor="@color/my_blue"
-            android:drawableTop="@drawable/set_device_info_button"/>
 
         <Button
             android:id="@+id/user_set_button"
@@ -43,17 +30,6 @@
             android:textSize="@dimen/sp_20"
             android:textColor="@color/my_blue"
             android:drawableTop="@drawable/set_user_set_button"/>
-
-        <Button
-            android:id="@+id/net_set_button"
-            android:layout_width="@dimen/dp_278"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp_60"
-            android:text="@string/setting_menu_net_set_text"
-            android:background="@null"
-            android:textSize="@dimen/sp_20"
-            android:textColor="@color/my_blue"
-            android:drawableTop="@drawable/set_net_set_button"/>
 
         <Button
             android:id="@+id/data_query_button"

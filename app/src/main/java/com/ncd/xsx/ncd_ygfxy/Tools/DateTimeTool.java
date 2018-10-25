@@ -13,6 +13,7 @@ import java.util.Date;
 public class DateTimeTool {
 
     private static SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmss");
+    private static SimpleDateFormat dateFormat_min = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     public static void setSystemDateTime(Context context, String dateTime)
     {
@@ -33,5 +34,10 @@ public class DateTimeTool {
         } catch (ParseException e) {
             Log.e("xsx", e.getMessage());
         }
+    }
+
+    public static String getSystemDateTime_min()
+    {
+        return dateFormat_min.format(new Date());
     }
 }

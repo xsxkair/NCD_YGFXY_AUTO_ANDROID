@@ -26,6 +26,7 @@ import com.ncd.xsx.ncd_ygfxy.Activitys.Dialogs.SelectDialog;
 import com.ncd.xsx.ncd_ygfxy.Activitys.Listeners.DialogSubmittListener;
 import com.ncd.xsx.ncd_ygfxy.Activitys.Listeners.OnViewItemClickListener;
 import com.ncd.xsx.ncd_ygfxy.Activitys.Listeners.OnViewItemLongClickListener;
+import com.ncd.xsx.ncd_ygfxy.Databases.Entity.User;
 import com.ncd.xsx.ncd_ygfxy.Databases.Page;
 import com.ncd.xsx.ncd_ygfxy.Databases.Services.TestDataService;
 import com.ncd.xsx.ncd_ygfxy.R;
@@ -235,7 +236,7 @@ public class DataQueryActivity extends MyActivity {
             @Override
             public void onItemLongClick(View view, int position, TestData testData) {
                 selectDialog.showDialog(getFragmentManager(), activity_tag, getResources().getString(R.string.setting_menu_net_select_dialog_title),
-                        action_menu[0], action_menu[1], action_menu[2], position);
+                        action_menu, position);
             }
         });
 
@@ -316,17 +317,13 @@ public class DataQueryActivity extends MyActivity {
         Card card = new Card();
         TestData testData = new TestData();
 
-        card.setItem(testItemQuerySpinner.getSelectedItem().toString());
-        card.setMeasure("pg/mL");
-        card.setPointnum(2);
-        card.setLowestresult(0.3f);
+
 
 
         testData.setCard(card);
-        testData.setItem(card.getItem());
         testData.setResultok(false);
         testData.setTestv((float) (Math.random()));
-        testData.setTester("zx");
+        testData.setTester(new User("zx"));
         testData.setBline(213);
         testData.setCline(267);
         testData.setTline(187);
